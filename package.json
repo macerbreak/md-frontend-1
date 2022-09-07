@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^2.3.2",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -12,11 +14,14 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
+    "mapbox-gl": "^2.10.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.19",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
+    "recoil": "^0.7.5",
     "typescript": "^4.8.2",
     "web-vitals": "^2.1.4"
   },
@@ -43,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@react-icons/all-files": "^4.1.0"
   }
 }

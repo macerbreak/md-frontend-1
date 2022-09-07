@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="initialization">
-      <change afterPath="$PROJECT_DIR$/src/redux/baseQuery.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/hooks.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/firstApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/firstSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="redux toolkit connected">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/button/Buttons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/geocoder/geocoder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/marker/mapMarker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/popup/mapPopup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/app/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/map/MainMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/utilityPanel/utilityPanel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/atoms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +42,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\src" />
+      <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -53,7 +65,8 @@
       <updated>1662319062634</updated>
       <workItem from="1662319065581" duration="11000" />
       <workItem from="1662319100656" duration="2590000" />
-      <workItem from="1662404321178" duration="3477000" />
+      <workItem from="1662404321178" duration="4204000" />
+      <workItem from="1662578780017" duration="1012000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -62,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662319126814</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="redux toolkit connected">
+      <created>1662408463211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662408463211</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,7 +102,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="initialization" />
+    <MESSAGE value="redux toolkit connected" />
+    <option name="LAST_COMMIT_MESSAGE" value="redux toolkit connected" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
