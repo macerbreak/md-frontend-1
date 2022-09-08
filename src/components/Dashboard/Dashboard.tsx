@@ -10,17 +10,21 @@ const Dashboard = () => {
         height:"100%",
         display:"flex"
     }}>
+        <Sidebar/>
+        <Routes>
+            <Route path={"/map"} element={<PollutionMap/>}/>
+        </Routes>
+    </Box>
+    </>
+}
+const Sidebar = () => {
+    return <>
         <Box sx={{
             width:"300px",
             height:"100%",
             background:"green"
         }}>
-
         </Box>
-        <Routes>
-            <Route path={"/map"} element={<PollutionMap/>}/>
-        </Routes>
-    </Box>
     </>
 }
 export default Dashboard
