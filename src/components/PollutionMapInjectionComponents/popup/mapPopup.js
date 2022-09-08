@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import {Popup} from "react-map-gl";
 import {useRecoilState} from "recoil";
-import {MapMarkers} from "../../utils/atoms";
+import {MapMarkers} from "../../../utils/atoms";
 import {
     Container, Heading, HStack, IconButton, Link,
     Popover,
@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import axios from "axios";
-import {toast} from "../../layouts/app/app";
+import {toast} from "../../../layouts/app/app";
 import {FaInfoCircle} from "@react-icons/all-files/fa/FaInfoCircle";
 import {FaTimes} from "@react-icons/all-files/fa/FaTimes"
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN

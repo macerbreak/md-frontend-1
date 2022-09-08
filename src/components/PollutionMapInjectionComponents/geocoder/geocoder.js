@@ -3,7 +3,7 @@ import React from "react"
 import {useControl} from "react-map-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.min"
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
-import {toast} from "../../layouts/app/app";
+import {toast} from "../../../layouts/app/app";
 
 export default function GeocoderControl(props) {
     useControl(

@@ -1,7 +1,7 @@
 import React,{memo} from "react";
 import Marker from "react-map-gl/dist/esm/components/marker";
 import {useRecoilState} from "recoil";
-import {MapMarkers} from "../../utils/atoms";
+import {MapMarkers} from "../../../utils/atoms";
 
 function MapMarker(props){
     const [_,setMapMarkers] = useRecoilState(MapMarkers);

@@ -7,7 +7,7 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { RecoilRoot } from "recoil";
 import { ChakraProvider } from "@chakra-ui/react";
-
+import {BrowserRouter} from "react-router-dom"
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -16,7 +16,9 @@ root.render(
     <Provider store={store}>
       <RecoilRoot>
         <ChakraProvider>
-          <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </ChakraProvider>
       </RecoilRoot>
     </Provider>

@@ -4,10 +4,10 @@ import axios from 'axios';
 import {useRecoilState, useRecoilValue} from "recoil";
 import {InitialRun, MapLoaded, MapMarkers, Theme, ViewState} from '../../utils/atoms';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import MapMarker from "../../components/marker/mapMarker";
+import MapMarker from "../../components/PollutionMapInjectionComponents/marker/mapMarker";
 import {Box} from "@chakra-ui/react";
-import MapPopup from "../../components/popup/mapPopup";
-import GeocoderControl from "../../components/geocoder/geocoder";
+import MapPopup from "../../components/PollutionMapInjectionComponents/popup/mapPopup";
+import GeocoderControl from "../../components/PollutionMapInjectionComponents/geocoder/geocoder";
 import {toast} from "../app/app";
 
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
@@ -83,11 +83,14 @@ export default function MainMap() {
     }
 
     return (
-        <Box>
+        <Box sx={{
+            width:"100%",
+            height:"100%"
+        }}>
             <Map
                 mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
                 {...viewState}
-                style={{width:"100vw", height: "100vh",zIndex:0,position: "absolute"}}
+                style={{width:"100%", height: "100%"}}
                 mapStyle={globalTheme.mapStyle}
                 onMove={event => {setViewState(event.viewState)}}
                 onClick={event => {

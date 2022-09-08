@@ -1,5 +1,5 @@
 import React, {memo} from "react";
-import UtilityButton from "../../components/button/Buttons";
+import UtilityButton from "../../components/PollutionMapInjectionComponents/button/Buttons";
 import {
     Box,
     Button, Divider, Heading, HStack,  Link,
