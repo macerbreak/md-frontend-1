@@ -14,8 +14,8 @@ function App() {
     <>
       <Box
         sx={{
-          width: "100vh",
-          height: "100vw",
+          width: "100vw",
+          height: "100vh",
         }}
       >
         <Dashboard />

@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="integrated air quality map">
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PollutionMap/PollutionMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/Buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PollutionMapInjectionComponents/button/Buttons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/geocoder/geocoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PollutionMapInjectionComponents/geocoder/geocoder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/marker/mapMarker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PollutionMapInjectionComponents/marker/mapMarker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup/mapPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PollutionMapInjectionComponents/popup/mapPopup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/map/MainMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/map/MainMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/utilityPanel/utilityPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/utilityPanel/utilityPanel.js" afterDir="false" />
-    </list>
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="routing in progress" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +55,7 @@
       <workItem from="1662319100656" duration="2590000" />
       <workItem from="1662404321178" duration="4204000" />
       <workItem from="1662578780017" duration="1362000" />
-      <workItem from="1662666444807" duration="3398000" />
+      <workItem from="1662666444807" duration="3778000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -92,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662580128413</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="routing in progress">
+      <created>1662670149917</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662670149917</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +107,8 @@
     <MESSAGE value="initialization" />
     <MESSAGE value="redux toolkit connected" />
     <MESSAGE value="integrated air quality map" />
-    <option name="LAST_COMMIT_MESSAGE" value="integrated air quality map" />
+    <MESSAGE value="routing in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="routing in progress" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
