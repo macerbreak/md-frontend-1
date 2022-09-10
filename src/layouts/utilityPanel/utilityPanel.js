@@ -45,7 +45,7 @@ function UtilityPanel(){
         <Box>
             <VStack
                 zIndex={1}
-                position={"fixed"}
+                position={"absolute"}
                 bottom={0}
                 left={0}
                 margin={"2rem"}
@@ -74,14 +74,6 @@ function UtilityPanel(){
                     aria-label='Clear Markers'
                     tooltip-label={"Delete all markers"}
                     colorScheme={"red"}
-                />
-                <UtilityButton
-                    icon={<BsInfoSquareFill />}
-                    onClick={onOpen}
-                    key={'about'}
-                    aria-label='about'
-                    tooltip-label={"About and Usage"}
-                    colorScheme={"telegram"}
                 />
             </VStack>
             <Modal isOpen={isOpen} onClose={onClose} isCentered={true} preserveScrollBarGap={true}>

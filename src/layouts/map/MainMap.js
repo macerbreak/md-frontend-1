@@ -51,7 +51,7 @@ export default function MainMap() {
         if (!mapLoaded){
             setMapLoaded(true)
             toast({
-                title: 'Map Loaded Successfully',
+                title: 'DashboardPollutionMap Loaded Successfully',
                 description: 'Click anywhere on the map for Air quality index stats',
                 status: 'success',
                 duration: 8000,

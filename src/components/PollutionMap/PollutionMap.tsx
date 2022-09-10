@@ -8,11 +8,11 @@ const PollutionMap = () => {
     return <>
         <Box sx={{
             position:"relative",
-            width:"700px",
-            height:"500px"
+            width:"90%",
+            height:"90%"
         }}>
             <UtilityPanel/>
-            <ToastContainer />
+            {/*<ToastContainer />*/}
             <MainMap />
         </Box>
     </>
