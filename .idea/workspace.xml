@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="routing in progress">
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardPollutionMap/DashboardPollutionMap.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardPollutionMap/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/constants.ts" afterDir="false" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="styled map page, adding sidebar buttons">
+      <change afterPath="$PROJECT_DIR$/src/svg/SidebarMapButtonSvg.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PollutionMap/PollutionMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PollutionMap/PollutionMap.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/map/MainMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/map/MainMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/utilityPanel/utilityPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/utilityPanel/utilityPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +72,8 @@
       <workItem from="1662404321178" duration="4204000" />
       <workItem from="1662578780017" duration="1362000" />
       <workItem from="1662666444807" duration="4342000" />
-      <workItem from="1662838450491" duration="9388000" />
+      <workItem from="1662838450491" duration="9535000" />
+      <workItem from="1662921003005" duration="4296000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -121,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662670816195</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="styled map page, adding sidebar buttons">
+      <created>1662848123824</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662848123824</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,7 +147,8 @@
     <MESSAGE value="redux toolkit connected" />
     <MESSAGE value="integrated air quality map" />
     <MESSAGE value="routing in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="routing in progress" />
+    <MESSAGE value="styled map page, adding sidebar buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="styled map page, adding sidebar buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
