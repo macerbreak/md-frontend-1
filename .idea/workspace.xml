@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="styled map page, adding sidebar buttons">
-      <change afterPath="$PROJECT_DIR$/src/svg/SidebarMapButtonSvg.tsx" afterDir="false" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="styled sidebar buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +68,9 @@
       <workItem from="1662578780017" duration="1362000" />
       <workItem from="1662666444807" duration="4342000" />
       <workItem from="1662838450491" duration="9535000" />
-      <workItem from="1662921003005" duration="4296000" />
+      <workItem from="1662921003005" duration="4873000" />
+      <workItem from="1663008263063" duration="2360000" />
+      <workItem from="1663012426751" duration="2391000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -124,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662848123824</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="styled sidebar buttons">
+      <created>1662926139561</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662926139561</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +152,8 @@
     <MESSAGE value="integrated air quality map" />
     <MESSAGE value="routing in progress" />
     <MESSAGE value="styled map page, adding sidebar buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="styled map page, adding sidebar buttons" />
+    <MESSAGE value="styled sidebar buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="styled sidebar buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
