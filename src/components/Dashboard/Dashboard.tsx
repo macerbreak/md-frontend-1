@@ -10,29 +10,23 @@ const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
   const config = {
     headers: {
-      // "content-type": "application/json charset=UTF-8",
-      "content-type": "application/json",
       "cache-control": "max-age=86400",
-      "content-encoding": "gzip",
-      server: "nginx",
-      vary: "Accept-Encoding",
-      etag: 'W/"631f979d-14ca78"',
-      "access-control-allow-origin": "*",
-      date: "Mon, 12 Sep 2022 20:33:34 GMT",
-      expires: "Tue, 13 Sep 2022 20:33:34 GMT",
-      "last-modified": "Mon, 12 Sep 2022 20:33:33 GMT",
+      "content-type": "application/json, application/json charset=UTF-8",
     },
   };
   useEffect(() => {
     axios
-      // .get(`https://api.waqi.info/feed/ukraine?token=${AQI_ACCESS_TOKEN}`)
-      .get(
-        `https://waqi.info/rtdata/markers-${+Date.now()
-          .toString()
-          .slice(0, 10)}/000.json`,
-        config
-      )
-      // .get("https://waqi.info/rtdata/markers-1663013315/000.json")
+      .get(`https://api.waqi.info/feed/kyiv?token=${AQI_ACCESS_TOKEN}`)
+      // .get(
+      //   `https://waqi.info/rtdata/markers-${+Date.now().toString().slice(0, 10)}/000.json`,
+      //   config
+      // )
+      // .get("https://waqi.info/rtdata/markers-1663100444/000.json")
+      //   .get("https://airnet.waqi.info/airnet/feed/hourly/S008352")
+      //   .get("https://api.waqi.info/api/attsse/S008352/yd.json")
+
+        // .get( "https://api.waqi.info/api/feed/@11903/aqi.json")
+
       .then((res) => {
         console.log({ res });
       });
