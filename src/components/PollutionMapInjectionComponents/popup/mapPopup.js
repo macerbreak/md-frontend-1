@@ -27,6 +27,7 @@ function MapPopup(props){
             axios
                 .get(`https://api.waqi.info/feed/geo:${props.latitude};${props.longitude}/?token=${AQI_ACCESS_TOKEN}`)
                 .then(response => {
+                    console.log({response})
                     setMapMarkers((markers)=>{
                         markers = JSON.parse(JSON.stringify(markers));
                         markers.markers[props.markerKey].aqiData = response.data.data

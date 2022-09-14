@@ -17,9 +17,10 @@ const Dashboard = () => {
   useEffect(() => {
     axios
       .get(`https://api.waqi.info/feed/kyiv?token=${AQI_ACCESS_TOKEN}`)
+      //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
       // .get(
-      //   `https://waqi.info/rtdata/markers-${+Date.now().toString().slice(0, 10)}/000.json`,
-      //   config
+      //   `https://waqi.info/rtdata/markers-${Date.now()}/000.json`,
+        // config
       // )
       // .get("https://waqi.info/rtdata/markers-1663100444/000.json")
       //   .get("https://airnet.waqi.info/airnet/feed/hourly/S008352")
