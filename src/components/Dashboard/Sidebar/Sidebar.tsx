@@ -26,12 +26,12 @@ const Sidebar = () => {
             <SidebarMapButtonSvg/>Dashboard Map
           </SidebarButton>
             <SidebarButton
-                isActive={pathname.includes("/item1")}
+                isActive={pathname.includes("/countries-rating")}
                 onClick={() => {
-                    navigate("/item1");
+                    navigate("/countries-rating");
                 }}
             >
-                Other Item
+                Countries Rating
             </SidebarButton>
             <SidebarButton
                 isActive={pathname.includes("/item2")}

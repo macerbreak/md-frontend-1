@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import firstSlice from "./reducers/firstSlice";
 import {firstApi} from "./reducers/firstApi";
-
+import airQualitySlice from "./reducers/airQualitySlice";
 export const store = configureStore({
     reducer: {
+        airQualitySlice,
         firstReducer:firstSlice,
         [firstApi.reducerPath]: firstApi.reducer,
     },

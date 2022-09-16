@@ -5,6 +5,9 @@ import DashboardPollutionMap from "./DashboardPollutionMap";
 import Sidebar from "./Sidebar/Sidebar";
 import { constants } from "../../system/constants";
 import axios from "axios";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
+import {getCountriesRatingTC} from "../../redux/reducers/airQualitySlice";
+import {convertCountryCode, isoCountries} from "../../utils/getCountryNameByCode";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -15,8 +18,8 @@ const Dashboard = () => {
     },
   };
   useEffect(() => {
-    axios
-      .get(`https://api.waqi.info/feed/kyiv?token=${AQI_ACCESS_TOKEN}`)
+    // axios
+      // .get(`https://api.waqi.info/feed/kyiv?token=${AQI_ACCESS_TOKEN}`)
       //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
       // .get(
       //   `https://waqi.info/rtdata/markers-${Date.now()}/000.json`,
@@ -28,9 +31,9 @@ const Dashboard = () => {
 
         // .get( "https://api.waqi.info/api/feed/@11903/aqi.json")
 
-      .then((res) => {
-        console.log({ res });
-      });
+      // .then((res) => {
+      //   console.log({ res });
+      // });
   }, []);
   return (
     <>
@@ -45,13 +48,26 @@ const Dashboard = () => {
         <RoutesBox>
           <Routes>
             <Route path={"/map"} element={<DashboardPollutionMap />} />
+            <Route path={"/countries-rating"} element={<DashboardCountriesRating />}/>
           </Routes>
         </RoutesBox>
       </Box>
     </>
   );
 };
+const DashboardCountriesRating = () => {
+    const countriesRating = useAppSelector(state=>state.airQualitySlice.countriesRating)
+    //https://www.countryflagsapi.com/
+    const countriesArray = countriesRating?countriesRating?.cities.map(countryObject => convertCountryCode(countryObject.country as keyof typeof isoCountries)):[]
+    const dispatch = useAppDispatch()
+    useEffect(()=>{
+        dispatch(getCountriesRatingTC())
+    },[])
+    console.log({countriesRating,countriesArray})
+    return <>
 
+    </>
+}
 const RoutesBox = styled(Box)({
   width: "100%",
   height: "100%",
