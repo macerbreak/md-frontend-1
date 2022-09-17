@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
-import { Box, styled } from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Box, styled} from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import DashboardPollutionMap from "./DashboardPollutionMap";
 import Sidebar from "./Sidebar/Sidebar";
 import { constants } from "../../system/constants";
 import axios from "axios";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {getCountriesRatingTC} from "../../redux/reducers/airQualitySlice";
-import {convertCountryCode, isoCountries} from "../../utils/getCountryNameByCode";
+import DashboardCountriesRating from "./DashboardCountriesRating";
+
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -55,19 +54,7 @@ const Dashboard = () => {
     </>
   );
 };
-const DashboardCountriesRating = () => {
-    const countriesRating = useAppSelector(state=>state.airQualitySlice.countriesRating)
-    //https://www.countryflagsapi.com/
-    const countriesArray = countriesRating?countriesRating?.cities.map(countryObject => convertCountryCode(countryObject.country as keyof typeof isoCountries)):[]
-    const dispatch = useAppDispatch()
-    useEffect(()=>{
-        dispatch(getCountriesRatingTC())
-    },[])
-    console.log({countriesRating,countriesArray})
-    return <>
 
-    </>
-}
 const RoutesBox = styled(Box)({
   width: "100%",
   height: "100%",

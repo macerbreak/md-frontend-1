@@ -12,6 +12,22 @@ export const constants = {
         pinkVeryPale:'#fcecfc',
         sidebarActiveButtonFont:"#7FBB9B",
         sidebarRegularButtonFont:"#333",
+        white:"#FFF",
+        aqiIndex:{
+            good:"#3E9767",
+            goodBackground:"#87B277",
+            moderate:"#F8DD43",
+            moderateBackground:"#EEF8BE",
+            unhealthyForSensitiveGroups:"#F29A3D",
+            unhealthyForSensitiveGroupsBackground:"#F2B88E",
+            unhealthy:"#BD1A36",
+            unhealthyBackground:"#BD8982",
+            veryUnhealthy:"#601697",
+            veryUnhealthyBackground:"#976887",
+            hazardous:"#740C24",
+            hazardousBackground:"#744246",
+        }
+
     },
     gradients:{
         sectionBoxGradient:"-webkit-linear-gradient(top, rgba(206,243,236,1) 0%, rgba(231,249,246,1) 52%, rgba(255,255,255,1) 100%);",

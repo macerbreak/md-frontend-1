@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="get rating">
-      <change afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/airQualitySlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/types/airQualitySliceType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/getCountryNameByCode.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/themeComponents/Collapse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/themeComponents/Typography.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/constants.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -81,7 +80,8 @@
       <workItem from="1663096348154" duration="4523000" />
       <workItem from="1663182490510" duration="1153000" />
       <workItem from="1663315658307" duration="981000" />
-      <workItem from="1663356616044" duration="3810000" />
+      <workItem from="1663356616044" duration="4097000" />
+      <workItem from="1663424672047" duration="12591000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663183137442</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="get rating">
+      <created>1663360798416</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1663360798416</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
