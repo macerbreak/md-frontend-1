@@ -7,19 +7,24 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { RecoilRoot } from "recoil";
 import { ChakraProvider } from "@chakra-ui/react";
-import {BrowserRouter} from "react-router-dom"
+import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RecoilRoot>
-        <ChakraProvider>
+        <QueryClientProvider client={queryClient}>
+          <ChakraProvider>
             <BrowserRouter>
-                <App />
+              <App />
             </BrowserRouter>
-        </ChakraProvider>
+          </ChakraProvider>
+        </QueryClientProvider>
       </RecoilRoot>
     </Provider>
   </React.StrictMode>

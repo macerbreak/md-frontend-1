@@ -3,12 +3,18 @@ import {
   convertCountryCode,
   isoCountries,
 } from "../../../utils/getCountryNameByCode";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { getCountriesRatingTC } from "../../../redux/reducers/airQualitySlice";
 import { Box } from "@mui/material";
 import { City } from "../../../redux/types/airQualitySliceType";
 import { constants } from "../../../system/constants";
 import { Typography } from "../../../themeComponents/Typography";
+import DashboardCountriesRatingChart from "./DashboardCountriesRatingChart";
+import Chart from "./Chart";
+import { withTooltip } from "@visx/tooltip";
+import Chart2 from "./Chart2";
+import Chart3 from "./Chart3";
+import LineChart from "./Chart3";
 
 const DashboardCountriesRating = () => {
   const countriesRating = useAppSelector(
@@ -104,7 +110,7 @@ const CountryRatingItem: React.FC<{
     place: number;
   };
 }> = ({ country }) => {
-    const [isExpandedAccordion, setIsExpandedAccordion] = useState(false)
+  const [isExpandedAccordion, setIsExpandedAccordion] = useState(false);
   const aqiColors = getAqiColors(country.aqi);
   return (
     <>
@@ -118,12 +124,13 @@ const CountryRatingItem: React.FC<{
           height: "auto",
           marginBottom: "20px",
           paddingLeft: "20px",
+          paddingBottom: isExpandedAccordion ? "20px" : "0px",
         }}
       >
         <Box
-            onClick={()=>{
-                setIsExpandedAccordion(!isExpandedAccordion)
-            }}
+          onClick={() => {
+            setIsExpandedAccordion(!isExpandedAccordion);
+          }}
           sx={{
             display: "grid",
             gridTemplateColumns: "40px 70px 50px 1fr 80px 50px",
@@ -184,15 +191,47 @@ const CountryRatingItem: React.FC<{
           >
             {country.aqi}
           </Box>
-          <Box sx={{
-              svg:{
-                  transform:isExpandedAccordion?"rotate(180deg)":"rotate(0deg)",
-                  transition:constants.transition,
+          <Box
+            sx={{
+              svg: {
+                transform: isExpandedAccordion
+                  ? "rotate(180deg)"
+                  : "rotate(0deg)",
+                transition: constants.transition,
               },
-              transition:constants.transition,
-          }}>
+              transition: constants.transition,
+            }}
+          >
             <AccordionArrowSvg />
           </Box>
+        </Box>
+        <Box
+          sx={{
+            maxHeight: isExpandedAccordion ? "450px" : "0px",
+            overflow: "hidden",
+            transition: constants.transition,
+          }}
+        >
+            {isExpandedAccordion && <LineChart countryData={country.evolution as [number, number][]}/>}
+          {/*<Chart2*/}
+          {/*  countryData={country.evolution as [number, number][]}*/}
+          {/*  width={600}*/}
+          {/*  height={400}*/}
+          {/*/>*/}
+
+
+          {/*<Box sx={{*/}
+          {/*    position: "relative",*/}
+          {/*    backgroundColor: "#201d47",*/}
+          {/*    width: "600px",*/}
+          {/*    minWidth: "300px",*/}
+          {/*    height: "400px",*/}
+          {/*    borderRadius: "40px",*/}
+          {/*    overflow: "hidden"*/}
+          {/*}}>*/}
+          {/*  <DashboardCountriesRatingChart countryData1={country.evolution as [number,number][]}/>*/}
+
+          {/*</Box>*/}
         </Box>
       </Box>
     </>

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="get rating">
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/themeComponents/Collapse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/themeComponents/Typography.ts" afterDir="false" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="added countries rating list">
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/Chart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/Chart2.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/Chart3.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRatingChart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/themeComponents/Collapse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/themeComponents/Collapse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\node_modules\prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -52,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\src\components\Dashboard\DashboardCountriesRating" />
       <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\src" />
       <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1" />
     </key>
@@ -81,7 +85,9 @@
       <workItem from="1663182490510" duration="1153000" />
       <workItem from="1663315658307" duration="981000" />
       <workItem from="1663356616044" duration="4097000" />
-      <workItem from="1663424672047" duration="12591000" />
+      <workItem from="1663424672047" duration="13398000" />
+      <workItem from="1663485466718" duration="629000" />
+      <workItem from="1663496864665" duration="17797000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -174,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663360798416</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added countries rating list">
+      <created>1663439039188</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1663439039188</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +215,8 @@
     <MESSAGE value="getting all stations" />
     <MESSAGE value="trying to find ids" />
     <MESSAGE value="get rating" />
-    <option name="LAST_COMMIT_MESSAGE" value="get rating" />
+    <MESSAGE value="added countries rating list" />
+    <option name="LAST_COMMIT_MESSAGE" value="added countries rating list" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
