@@ -13,16 +13,19 @@ const Dashboard = () => {
   const config = {
     headers: {
       "cache-control": "max-age=86400",
-      "content-type": "application/json, application/json charset=UTF-8",
+      "content-type": "application/octet-stream, application/json"
+      // "content-type": "application/json, application/json charset=UTF-8",
     },
   };
   useEffect(() => {
-    // axios
-      // .get(`https://api.waqi.info/feed/kyiv?token=${AQI_ACCESS_TOKEN}`)
+    axios
+      .get(`https://api.waqi.info/feed/Aviles?token=${AQI_ACCESS_TOKEN}`)
+      // https://airnet.waqi.info/airnet/sse/historic/daily/341071?specie=pm25
       //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
       // .get(
-      //   `https://waqi.info/rtdata/markers-${Date.now()}/000.json`,
-        // config
+      //   `https://waqi.info/rtdata/markers-${Math.floor(Date.now()/1000 - 600000)}/000.json`,
+      //   //   "https://waqi.info/rtdata/markers-1663574735/000.json"
+      //   //config
       // )
       // .get("https://waqi.info/rtdata/markers-1663100444/000.json")
       //   .get("https://airnet.waqi.info/airnet/feed/hourly/S008352")
@@ -30,9 +33,9 @@ const Dashboard = () => {
 
         // .get( "https://api.waqi.info/api/feed/@11903/aqi.json")
 
-      // .then((res) => {
-      //   console.log({ res });
-      // });
+      .then((res) => {
+        console.log({ res });
+      });
   }, []);
   return (
     <>
