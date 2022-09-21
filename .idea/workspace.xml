@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="added countries charts">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="testing getting city forecast">
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getCountriesWithNamesAndFlagsArray.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -82,7 +87,8 @@
       <workItem from="1663496864665" duration="18420000" />
       <workItem from="1663571845804" duration="352000" />
       <workItem from="1663574641445" duration="1522000" />
-      <workItem from="1663697805233" duration="2105000" />
+      <workItem from="1663697805233" duration="2915000" />
+      <workItem from="1663786783591" duration="5450000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -189,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663524911053</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="testing getting city forecast">
+      <created>1663700908493</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1663700908493</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +232,8 @@
     <MESSAGE value="get rating" />
     <MESSAGE value="added countries rating list" />
     <MESSAGE value="added countries charts" />
-    <option name="LAST_COMMIT_MESSAGE" value="added countries charts" />
+    <MESSAGE value="testing getting city forecast" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing getting city forecast" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

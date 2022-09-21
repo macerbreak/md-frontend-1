@@ -34,12 +34,12 @@ const Sidebar = () => {
                 Countries Rating
             </SidebarButton>
             <SidebarButton
-                isActive={pathname.includes("/item2")}
+                isActive={pathname.includes("/forecast")}
                 onClick={() => {
-                    navigate("/item2");
+                    navigate("/forecast");
                 }}
             >
-                Other Item
+                Forecast
             </SidebarButton>
             <SidebarButton
                 isActive={pathname.includes("/item3")}

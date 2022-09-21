@@ -6,7 +6,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { getCountriesRatingTC } from "../../../redux/reducers/airQualitySlice";
 import { Box } from "@mui/material";
-import { City } from "../../../redux/types/airQualitySliceType";
+import {City, CountriesRatingType} from "../../../redux/types/airQualitySliceType";
 import { constants } from "../../../system/constants";
 import { Typography } from "../../../themeComponents/Typography";
 import DashboardCountriesRatingChart from "./DashboardCountriesRatingChart";
@@ -15,24 +15,15 @@ import { withTooltip } from "@visx/tooltip";
 import Chart2 from "./Chart2";
 import Chart3 from "./Chart3";
 import LineChart from "./Chart3";
+import { getCountriesWithNamesAndFlagsArray } from "../../../utils/getCountriesWithNamesAndFlagsArray";
+
 
 const DashboardCountriesRating = () => {
   const countriesRating = useAppSelector(
     (state) => state.airQualitySlice.countriesRating
   );
   //https://www.countryflagsapi.com/
-  const countriesWithNamesAndFlagsArray = countriesRating
-    ? countriesRating?.cities.map((countryObject, index) => {
-        return {
-          ...countryObject,
-          flag: `https://countryflagsapi.com/png/${countryObject.country.toLowerCase()}`,
-          countryName: convertCountryCode(
-            countryObject.country as keyof typeof isoCountries
-          ),
-          place: index + 1,
-        };
-      })
-    : [];
+  const countriesWithNamesAndFlagsArray = getCountriesWithNamesAndFlagsArray(countriesRating)
 
   const dispatch = useAppDispatch();
   useEffect(() => {
