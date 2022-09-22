@@ -61,7 +61,7 @@ const aqiRanges = {
   veryUnhealthy: [201, 300],
   hazardous: [300],
 };
-const getAqiColors = (aqi: number) => {
+export const getAqiColors = (aqi: number) => {
   if (aqi <= aqiRanges.good[1]) {
     return {
       color: constants.colors.white,

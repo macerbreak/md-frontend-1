@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { getCountriesRatingTC } from "../../../redux/reducers/airQualitySlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { getCountriesWithNamesAndFlagsArray } from "../../../utils/getCountriesWithNamesAndFlagsArray";
@@ -6,6 +6,12 @@ import { Box, styled } from "@mui/material";
 import { constants } from "../../../system/constants";
 import { Typography } from "../../../themeComponents/Typography";
 import { City } from "../../../redux/types/airQualitySliceType";
+import { useGetCountryDataQuery } from "../../../redux/reducers/forecastApi";
+import {
+  CityForForecast,
+  CountryForForecastWithCities,
+} from "../../../redux/types/forecastApiType";
+import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRating";
 
 const useCountryButtonsBoxWidth = () => {
   const [width, setWidth] = useState(0);
@@ -22,86 +28,161 @@ const DashboardForecast = () => {
   const countriesRating = useAppSelector(
     (state) => state.airQualitySlice.countriesRating
   );
-  const countriesWithNamesAndFlagsArray =
-    getCountriesWithNamesAndFlagsArray(countriesRating);
+  const countriesWithNamesAndFlagsArray = useMemo(() => {
+    return getCountriesWithNamesAndFlagsArray(countriesRating);
+  }, [countriesRating]);
+
   const [selectedCountry, setSelectedCountry] = useState<
     (City & { flag: string; countryName: string }) | null
   >(null);
-  const countriesBoxWidth = useCountryButtonsBoxWidth();
-  const gridForCountriesBox =countriesBoxWidth? Array(Math.floor(countriesBoxWidth/120)).fill(0)?.reduce((grid=" ")=>grid+"1fr ").slice(1,-1) :"1fr 1fr 1fr 1fr 1fr 1fr 1fr"
-  useEffect(() => {
-    console.log({ countriesBoxWidth });
-  }, [countriesBoxWidth]);
+  const [selectedCity, setSelectedCity] = useState<CityForForecast | null>(
+    null
+  );
+  const { data: countryData } = useGetCountryDataQuery(
+    selectedCountry?.country
+  );
+  console.log({ countryData });
   useEffect(() => {
     dispatch(getCountriesRatingTC());
   }, []);
 
   return (
     <>
-      <ForecastBox>
-        <Box
-          id={"forecast-countries-box"}
-          sx={{
-            backgroundColor: constants.colors.sidebar,
-            borderRadius: "10px",
-            boxShadow: "0px 0px 35px -9px rgba(0,0,0,0.75)",
-            border: "5px solid white",
-            height: "auto",
-            maxHeight: "400px",
-            marginBottom: "20px",
-            padding: "20px ",
-            overflowY: "scroll",
+      <DashboardForecastContext.Provider
+        value={{
+          countryData,
+          countriesWithNamesAndFlagsArray,
+          selectedCountry,
+          setSelectedCountry,
+          selectedCity,
+          setSelectedCity,
+        }}
+      >
+        <ForecastBox>
+          <DashboardForecastCountrySelect />
+          <DashboardForecastCitySelect />
+        </ForecastBox>
+      </DashboardForecastContext.Provider>
+    </>
+  );
+};
+const DashboardForecastCitySelect = () => {
+  const { countryData, selectedCity, setSelectedCity } = useContext(
+    DashboardForecastContext
+  );
+  const countryDataToShow = countryData?.cities ?? [];
+  return (
+    <>
+      <ForecastListBox
+        sx={{
+          display:"flex",
+            flexDirection:"column"
+        }}
+      >
+        {countryDataToShow?.map((city, index) => {
+          const aqiColors = getAqiColors(+city.station.a);
+          return (
+            <>
+              <CityButton
+                onClick={() => {
+                  setSelectedCity(city);
+                }}
+                active={selectedCity?.city === city.city}
+                key={index}
+              >
+                  <Typography sx={{
+                      fontWeight:"600",
+                      marginRight:"20px",
 
-            display: "grid",
-            gridTemplateColumns: gridForCountriesBox,
-            "&::-webkit-scrollbar": {
-              width: "0px",
-            },
-          }}
-        >
-          {countriesWithNamesAndFlagsArray.map((country, index) => {
-            return (
-              <>
-                <ForecastRegionButton
-                  onClick={() => {
-                    setSelectedCountry(country);
+                  }}>{index+1}</Typography>
+                <Typography sx={{
+                    fontWeight:"600",
+                    flex:'1'
+
+                }}>{city.city.slice(0, 10)}</Typography>
+                <Box
+                  sx={{
+                    width: "60px",
+                    height: "32px",
+                      display:"flex",
+                      alignItems:"center",
+                      justifyContent:"center",
+                      borderRadius:"10px",
+                      fontWeight:"600",
+                    ...aqiColors,
                   }}
-                  active={selectedCountry?.countryName === country.countryName}
-                  key={index}
+                >
+                  {city.station.a}
+                </Box>
+              </CityButton>
+            </>
+          );
+        })}
+      </ForecastListBox>
+    </>
+  );
+};
+const DashboardForecastCountrySelect = () => {
+  const countriesBoxWidth = useCountryButtonsBoxWidth();
+  const {
+    countriesWithNamesAndFlagsArray,
+    selectedCountry,
+    setSelectedCountry,
+  } = useContext(DashboardForecastContext);
+  const gridForCountriesBox = countriesBoxWidth
+    ? Array(Math.floor(countriesBoxWidth / 120))
+        .fill(0)
+        ?.reduce((grid = " ") => grid + "1fr ")
+        .slice(1, -1)
+    : "1fr 1fr 1fr 1fr 1fr 1fr 1fr";
+  return (
+    <>
+      <ForecastListBox
+        id={"forecast-countries-box"}
+        gridForCountriesBox={gridForCountriesBox}
+      >
+        {countriesWithNamesAndFlagsArray.map((country, index) => {
+          return (
+            <>
+              <ForecastRegionButton
+                onClick={() => {
+                  setSelectedCountry(country);
+                }}
+                active={selectedCountry?.countryName === country.countryName}
+                key={index}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <Box
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
+                      height: "35px",
+                      width: "50px",
+                      img: {
+                        height: "100%",
+                        width: "50px",
+                      },
                     }}
                   >
-                    <Box
-                      sx={{
-                        height: "35px",
-                        width: "50px",
-                        img: {
-                          height: "100%",
-                          width: "50px",
-                        },
-                      }}
-                    >
-                      <img src={country.flag} />
-                    </Box>
-                    <Typography
-                      sx={{
-                        fontWeight: "600",
-                        marginLeft: "10px",
-                      }}
-                    >
-                      {country.country}
-                    </Typography>
+                    <img src={country.flag} />
                   </Box>
-                </ForecastRegionButton>
-              </>
-            );
-          })}
-        </Box>
-      </ForecastBox>
+                  <Typography
+                    sx={{
+                      fontWeight: "600",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    {country.country}
+                  </Typography>
+                </Box>
+              </ForecastRegionButton>
+            </>
+          );
+        })}
+      </ForecastListBox>
     </>
   );
 };
@@ -125,5 +206,61 @@ const ForecastRegionButton = styled("button")<{ active: boolean }>(
 );
 const ForecastBox = styled(Box)({
   padding: "20px",
+});
+const ForecastListBox = styled(Box)<{ gridForCountriesBox?: string }>(
+  ({ gridForCountriesBox }) => ({
+    backgroundColor: constants.colors.sidebar,
+    borderRadius: "10px",
+    boxShadow: "0px 0px 35px -9px rgba(0,0,0,0.75)",
+    border: "5px solid white",
+    height: "auto",
+    maxHeight: "400px",
+    marginBottom: "20px",
+    padding: "20px ",
+    overflowY: "scroll",
+
+    display: "grid",
+    gridTemplateColumns: gridForCountriesBox ?? "1fr 1fr 1fr 1fr 1fr 1fr 1fr ",
+    "&::-webkit-scrollbar": {
+      width: "0px",
+    },
+  })
+);
+const CityButton = styled("button")<{ active: boolean }>(
+    ({ active }) => ({
+        display: "grid",
+        gridTemplateColumns:"20px 1fr 60px",
+        width: "100%",
+        height: "60px",
+        borderRadius: "10px",
+        border: active ? "3px solid white" : "0px solid white",
+        backgroundColor: active ? "rgba(255,255,255,0.5)" : "transparent",
+        "&:hover": {
+            border: "3px solid white",
+            backgroundColor: "rgba(255,255,255,0.5)",
+            transition: constants.transition,
+        },
+        transition: constants.transition,
+    })
+);
+const DashboardForecastContext = React.createContext({
+  countriesWithNamesAndFlagsArray: [] as {
+    flag: string;
+    countryName: string;
+    place: number;
+    country: string;
+    aqis: number[];
+    aqi: number;
+    evolution: number[][];
+  }[],
+  setSelectedCountry: (
+    selectedCountry: (City & { flag: string; countryName: string }) | null
+  ) => {},
+  selectedCountry: null as
+    | (City & { flag: string; countryName: string })
+    | null,
+  countryData: {} as CountryForForecastWithCities | undefined,
+  selectedCity: null as CityForForecast | null,
+  setSelectedCity: (electedCity: CityForForecast | null) => {},
 });
 export default DashboardForecast;
