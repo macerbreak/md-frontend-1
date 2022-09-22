@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="added coutries for forecast">
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/forecastApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/types/forecastApiType.ts" afterDir="false" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="got cities for forecast">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/DashboardCountriesRating.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +84,7 @@
       <workItem from="1663574641445" duration="1522000" />
       <workItem from="1663697805233" duration="2915000" />
       <workItem from="1663786783591" duration="5746000" />
-      <workItem from="1663869981184" duration="4994000" />
+      <workItem from="1663869981184" duration="5769000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -209,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663792457025</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="got cities for forecast">
+      <created>1663875150248</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1663875150248</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +244,8 @@
     <MESSAGE value="added countries charts" />
     <MESSAGE value="testing getting city forecast" />
     <MESSAGE value="added coutries for forecast" />
-    <option name="LAST_COMMIT_MESSAGE" value="added coutries for forecast" />
+    <MESSAGE value="got cities for forecast" />
+    <option name="LAST_COMMIT_MESSAGE" value="got cities for forecast" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

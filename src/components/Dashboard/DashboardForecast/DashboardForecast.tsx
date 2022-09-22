@@ -12,6 +12,7 @@ import {
   CountryForForecastWithCities,
 } from "../../../redux/types/forecastApiType";
 import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRating";
+import moment from "moment";
 
 const useCountryButtonsBoxWidth = () => {
   const [width, setWidth] = useState(0);
@@ -38,9 +39,12 @@ const DashboardForecast = () => {
   const [selectedCity, setSelectedCity] = useState<CityForForecast | null>(
     null
   );
-  const { data: countryData } = useGetCountryDataQuery(
+  const { data: countryData, refetch:refetchCountryData } = useGetCountryDataQuery(
     selectedCountry?.country
   );
+  useEffect(()=>{
+      refetchCountryData()
+  },[selectedCountry])
   console.log({ countryData });
   useEffect(() => {
     dispatch(getCountriesRatingTC());
@@ -93,13 +97,18 @@ const DashboardForecastCitySelect = () => {
                   <Typography sx={{
                       fontWeight:"600",
                       marginRight:"20px",
-
+                      whiteSpace:"nowrap"
                   }}>{index+1}</Typography>
                 <Typography sx={{
                     fontWeight:"600",
-                    flex:'1'
 
                 }}>{city.city.slice(0, 10)}</Typography>
+                  <Typography>
+                      {city.station.n.slice(0, 20)}
+                  </Typography>
+                  <Typography>
+                      {moment(city.station.u).format("YYYY-MM-DD HH:mm")}
+                  </Typography>
                 <Box
                   sx={{
                     width: "60px",
@@ -226,12 +235,17 @@ const ForecastListBox = styled(Box)<{ gridForCountriesBox?: string }>(
     },
   })
 );
-const CityButton = styled("button")<{ active: boolean }>(
+const CityButton = styled(Box)<{ active: boolean }>(
     ({ active }) => ({
+        marginBottom:"20px",
         display: "grid",
-        gridTemplateColumns:"20px 1fr 60px",
+        gridTemplateColumns:"40px 150px 200px 1fr 60px",
+        cursor:"pointer",
+        alignItems:"center",
+        padding:"0px 20px",
         width: "100%",
-        height: "60px",
+        height: "50px",
+        minHeight:"50px",
         borderRadius: "10px",
         border: active ? "3px solid white" : "0px solid white",
         backgroundColor: active ? "rgba(255,255,255,0.5)" : "transparent",
