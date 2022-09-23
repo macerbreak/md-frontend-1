@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="got cities for forecast">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="made cities for forecast">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/airQualitySlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/airQualitySlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/airQualitySliceType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/airQualitySliceType.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +87,8 @@
       <workItem from="1663574641445" duration="1522000" />
       <workItem from="1663697805233" duration="2915000" />
       <workItem from="1663786783591" duration="5746000" />
-      <workItem from="1663869981184" duration="5769000" />
+      <workItem from="1663869981184" duration="6831000" />
+      <workItem from="1663954737781" duration="3731000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -212,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663875150248</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="made cities for forecast">
+      <created>1663876148515</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1663876148515</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +256,8 @@
     <MESSAGE value="testing getting city forecast" />
     <MESSAGE value="added coutries for forecast" />
     <MESSAGE value="got cities for forecast" />
-    <option name="LAST_COMMIT_MESSAGE" value="got cities for forecast" />
+    <MESSAGE value="made cities for forecast" />
+    <option name="LAST_COMMIT_MESSAGE" value="made cities for forecast" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

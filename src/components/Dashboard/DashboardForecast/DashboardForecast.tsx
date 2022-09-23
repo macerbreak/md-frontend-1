@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import { getCountriesRatingTC } from "../../../redux/reducers/airQualitySlice";
+import {
+  getCityDataTC,
+  getCountriesRatingTC,
+} from "../../../redux/reducers/airQualitySlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { getCountriesWithNamesAndFlagsArray } from "../../../utils/getCountriesWithNamesAndFlagsArray";
 import { Box, styled } from "@mui/material";
@@ -32,19 +35,24 @@ const DashboardForecast = () => {
   const countriesWithNamesAndFlagsArray = useMemo(() => {
     return getCountriesWithNamesAndFlagsArray(countriesRating);
   }, [countriesRating]);
-
   const [selectedCountry, setSelectedCountry] = useState<
     (City & { flag: string; countryName: string }) | null
   >(null);
   const [selectedCity, setSelectedCity] = useState<CityForForecast | null>(
     null
   );
-  const { data: countryData, refetch:refetchCountryData } = useGetCountryDataQuery(
-    selectedCountry?.country
-  );
-  useEffect(()=>{
-      refetchCountryData()
-  },[selectedCountry])
+  const { data: countryData, refetch: refetchCountryData } =
+    useGetCountryDataQuery(selectedCountry?.country);
+  useEffect(() => {
+    if (selectedCity) {
+      dispatch(
+        getCityDataTC(selectedCity.station.g[0], selectedCity.station.g[1])
+      );
+    }
+  }, [selectedCity, dispatch]);
+  useEffect(() => {
+    refetchCountryData();
+  }, [selectedCountry]);
   console.log({ countryData });
   useEffect(() => {
     dispatch(getCountriesRatingTC());
@@ -65,8 +73,39 @@ const DashboardForecast = () => {
         <ForecastBox>
           <DashboardForecastCountrySelect />
           <DashboardForecastCitySelect />
+          <DashboardForecastTable />
         </ForecastBox>
       </DashboardForecastContext.Provider>
+    </>
+  );
+};
+
+const DashboardForecastTable = () => {
+  const cityForecastResponse = useAppSelector(
+    (state) => state.airQualitySlice.cityForecastResponse
+  );
+  console.log({ cityForecastResponse });
+  return (
+    <>
+      <Box
+        sx={{
+          backgroundColor: constants.colors.sidebar,
+          borderRadius: "10px",
+          boxShadow: "0px 0px 35px -9px rgba(0,0,0,0.75)",
+          border: "5px solid white",
+          height: "auto",
+          maxHeight: "400px",
+          marginBottom: "20px",
+          padding: "20px ",
+          overflowY: "scroll",
+
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr ",
+          "&::-webkit-scrollbar": {
+            width: "0px",
+          },
+        }}
+      ></Box>
     </>
   );
 };
@@ -79,8 +118,8 @@ const DashboardForecastCitySelect = () => {
     <>
       <ForecastListBox
         sx={{
-          display:"flex",
-            flexDirection:"column"
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {countryDataToShow?.map((city, index) => {
@@ -94,30 +133,35 @@ const DashboardForecastCitySelect = () => {
                 active={selectedCity?.city === city.city}
                 key={index}
               >
-                  <Typography sx={{
-                      fontWeight:"600",
-                      marginRight:"20px",
-                      whiteSpace:"nowrap"
-                  }}>{index+1}</Typography>
-                <Typography sx={{
-                    fontWeight:"600",
-
-                }}>{city.city.slice(0, 10)}</Typography>
-                  <Typography>
-                      {city.station.n.slice(0, 20)}
-                  </Typography>
-                  <Typography>
-                      {moment(city.station.u).format("YYYY-MM-DD HH:mm")}
-                  </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: "600",
+                    marginRight: "20px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {index + 1}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: "600",
+                  }}
+                >
+                  {city.city.slice(0, 10)}
+                </Typography>
+                <Typography>{city.station.n.slice(0, 20)}</Typography>
+                <Typography>
+                  {moment(city.station.u).format("YYYY-MM-DD HH:mm")}
+                </Typography>
                 <Box
                   sx={{
                     width: "60px",
                     height: "32px",
-                      display:"flex",
-                      alignItems:"center",
-                      justifyContent:"center",
-                      borderRadius:"10px",
-                      fontWeight:"600",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: "10px",
+                    fontWeight: "600",
                     ...aqiColors,
                   }}
                 >
@@ -235,28 +279,26 @@ const ForecastListBox = styled(Box)<{ gridForCountriesBox?: string }>(
     },
   })
 );
-const CityButton = styled(Box)<{ active: boolean }>(
-    ({ active }) => ({
-        marginBottom:"20px",
-        display: "grid",
-        gridTemplateColumns:"40px 150px 200px 1fr 60px",
-        cursor:"pointer",
-        alignItems:"center",
-        padding:"0px 20px",
-        width: "100%",
-        height: "50px",
-        minHeight:"50px",
-        borderRadius: "10px",
-        border: active ? "3px solid white" : "0px solid white",
-        backgroundColor: active ? "rgba(255,255,255,0.5)" : "transparent",
-        "&:hover": {
-            border: "3px solid white",
-            backgroundColor: "rgba(255,255,255,0.5)",
-            transition: constants.transition,
-        },
-        transition: constants.transition,
-    })
-);
+const CityButton = styled(Box)<{ active: boolean }>(({ active }) => ({
+  marginBottom: "20px",
+  display: "grid",
+  gridTemplateColumns: "40px 150px 200px 1fr 60px",
+  cursor: "pointer",
+  alignItems: "center",
+  padding: "0px 20px",
+  width: "100%",
+  height: "50px",
+  minHeight: "50px",
+  borderRadius: "10px",
+  border: active ? "3px solid white" : "0px solid white",
+  backgroundColor: active ? "rgba(255,255,255,0.5)" : "transparent",
+  "&:hover": {
+    border: "3px solid white",
+    backgroundColor: "rgba(255,255,255,0.5)",
+    transition: constants.transition,
+  },
+  transition: constants.transition,
+}));
 const DashboardForecastContext = React.createContext({
   countriesWithNamesAndFlagsArray: [] as {
     flag: string;
