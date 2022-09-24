@@ -50,6 +50,7 @@ const Dashboard = () => {
         <RoutesBox>
           <Routes>
             <Route path={"/map"} element={<DashboardPollutionMap />} />
+
             <Route
               path={"/countries-rating"}
               element={<DashboardCountriesRating />}
