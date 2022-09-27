@@ -11,3 +11,8 @@ export const getCityData = (latitude: number, longitude: number) => {
     `https://api.waqi.info/feed/geo:${latitude};${longitude}/?token=${AQI_ACCESS_TOKEN}`
   );
 };
+export const getAllStations = () => {
+  return axios.get("https://waqi.info/rtdata/" + "?_="+Date.now()).then(res=>{
+    return axios.get(`https://waqi.info/rtdata/${res.data.path}/000.json`)
+  })
+}

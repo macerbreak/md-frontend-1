@@ -2,24 +2,31 @@ import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import {
   CityForecastResponseData,
-  CountriesRatingType,
+  CountriesRatingType, GetAllStationsStation,
 } from "../types/airQualitySliceType";
-import { getCityData, getCountriesRating } from "../../api";
+import {getAllStations, getCityData, getCountriesRating} from "../../api";
 
 export interface CounterState {
   countriesRating: CountriesRatingType | null;
   cityForecastResponse: CityForecastResponseData | null;
+  allStations: GetAllStationsStation[]|null
 }
 
 const initialState: CounterState = {
   countriesRating: null,
   cityForecastResponse: null,
+  allStations: null
 };
 
 export const airQualitySlice = createSlice({
   name: "airQualityReducer",
   initialState,
   reducers: {
+    setAllStationsAC : (state,
+                         action: PayloadAction<GetAllStationsStation[]|null>)=> {
+      console.log("Heelooo22")
+      state.allStations = action.payload
+    },
     setCityForecastResponseAC: (
       state,
       action: PayloadAction<CityForecastResponseData | null>
@@ -36,7 +43,7 @@ export const airQualitySlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCountriesRatingAC, setCityForecastResponseAC } =
+export const { setCountriesRatingAC, setCityForecastResponseAC,setAllStationsAC } =
   airQualitySlice.actions;
 
 export const getCountriesRatingTC = () => async (dispatch: Dispatch) => {
@@ -56,5 +63,14 @@ export const getCityDataTC =
     //
     console.log({ cityDataResponse });
   };
+export const getAllStationsTC = () => async (dispatch:Dispatch)=> {
+  const getAllStationsResponse = await getAllStations() as unknown as {data:{stations:GetAllStationsStation[]}}
+  console.log("Hello")
+  if(getAllStationsResponse?.data?.stations){
+    dispatch(setAllStationsAC(getAllStationsResponse?.data?.stations))
+  }
 
+  console.log("Hello3")
+
+}
 export default airQualitySlice.reducer;

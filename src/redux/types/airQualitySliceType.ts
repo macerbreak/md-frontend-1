@@ -82,3 +82,11 @@ export interface Time {
   v: number;
   iso: Date;
 }
+export interface GetAllStationsStation {
+  g: number[];
+  n: string;
+  u: Date;
+  a: string;
+  t: string;
+  x: string;
+}

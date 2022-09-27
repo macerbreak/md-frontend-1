@@ -7,9 +7,14 @@ import { constants } from "../../system/constants";
 import axios from "axios";
 import DashboardCountriesRating from "./DashboardCountriesRating";
 import DashboardForecast from "./DashboardForecast";
+import {getAllStationsTC} from "../../redux/reducers/airQualitySlice";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
+  const dispatch = useAppDispatch()
+  const allStations = useAppSelector(state=>state.airQualitySlice.allStations)
+  console.log({allStations})
   const config = {
     headers: {
       "cache-control": "max-age=86400",
@@ -18,24 +23,26 @@ const Dashboard = () => {
     },
   };
   useEffect(() => {
-    axios
-      .get(`https://api.waqi.info/feed/Aviles?token=${AQI_ACCESS_TOKEN}`)
-      // https://airnet.waqi.info/airnet/sse/historic/daily/341071?specie=pm25
-      //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
-      // .get(
-      //   `https://waqi.info/rtdata/markers-${Math.floor(Date.now()/1000 - 600000)}/000.json`,
-      //   //   "https://waqi.info/rtdata/markers-1663574735/000.json"
-      //   //config
-      // )
-      // .get("https://waqi.info/rtdata/markers-1663100444/000.json")
-      //   .get("https://airnet.waqi.info/airnet/feed/hourly/S008352")
-      //   .get("https://api.waqi.info/api/attsse/S008352/yd.json")
+    dispatch(getAllStationsTC())
+    // axios
+      // .get(`https://api.waqi.info/feed/Aviles?token=${AQI_ACCESS_TOKEN}`)
+      // // https://airnet.waqi.info/airnet/sse/historic/daily/341071?specie=pm25
+      // //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
+      // // .get(
+      // //   `https://waqi.info/rtdata/markers-${Math.floor(Date.now()/1000 - 600000)}/000.json`,
+      // //   //   "https://waqi.info/rtdata/markers-1663574735/000.json"
+      // //   //config
+      // // )
+      // // .get("https://waqi.info/rtdata/markers-1663100444/000.json")
+      // //   .get("https://airnet.waqi.info/airnet/feed/hourly/S008352")
+      // //   .get("https://api.waqi.info/api/attsse/S008352/yd.json")
+      //
+      // // .get( "https://api.waqi.info/api/feed/@11903/aqi.json")
+      //
+      // .then((res) => {
+      //   console.log({ res });
+      // });
 
-      // .get( "https://api.waqi.info/api/feed/@11903/aqi.json")
-
-      .then((res) => {
-        console.log({ res });
-      });
   }, []);
   return (
     <>
