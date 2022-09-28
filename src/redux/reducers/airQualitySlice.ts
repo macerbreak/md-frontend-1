@@ -65,12 +65,8 @@ export const getCityDataTC =
   };
 export const getAllStationsTC = () => async (dispatch:Dispatch)=> {
   const getAllStationsResponse = await getAllStations() as unknown as {data:{stations:GetAllStationsStation[]}}
-  console.log("Hello")
   if(getAllStationsResponse?.data?.stations){
     dispatch(setAllStationsAC(getAllStationsResponse?.data?.stations))
   }
-
-  console.log("Hello3")
-
 }
 export default airQualitySlice.reducer;

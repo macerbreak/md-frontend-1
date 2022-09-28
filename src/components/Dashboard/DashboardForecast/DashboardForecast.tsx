@@ -71,8 +71,8 @@ const DashboardForecast = () => {
       >
         <ForecastBox>
           <DashboardForecastCountrySelect />
-          <DashboardForecastCitySelect />
-          <DashboardForecastTable />
+            {selectedCountry && <DashboardForecastCitySelect />}
+            {selectedCity && <DashboardForecastTable />}
         </ForecastBox>
       </DashboardForecastContext.Provider>
     </>

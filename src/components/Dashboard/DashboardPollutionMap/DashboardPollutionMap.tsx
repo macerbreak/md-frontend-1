@@ -18,7 +18,7 @@ const PollutionMapBox = styled(Box)({
     display:"flex",
     justifyContent:"center",
     alignItems:"center",
-    background:constants.gradients.sectionBoxGradient,
+    background:constants.colors.sidebar,
     borderRadius:"30px",
     boxShadow:"0px 0px 35px -9px rgba(0,0,0,0.75)",
     border:"5px solid white"

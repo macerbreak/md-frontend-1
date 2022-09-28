@@ -42,12 +42,12 @@ const Sidebar = () => {
                 Forecast
             </SidebarButton>
             <SidebarButton
-                isActive={pathname.includes("/item3")}
+                isActive={pathname.includes("/all-stations")}
                 onClick={() => {
-                    navigate("/item3");
+                    navigate("/all-stations");
                 }}
             >
-                Other Item
+                All stations
             </SidebarButton>
         </SidebarButtonsBox>
       </Box>

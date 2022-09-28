@@ -9,6 +9,7 @@ import DashboardCountriesRating from "./DashboardCountriesRating";
 import DashboardForecast from "./DashboardForecast";
 import {getAllStationsTC} from "../../redux/reducers/airQualitySlice";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
+import DashboardAllStations from "./DashboardAllStations";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -23,7 +24,7 @@ const Dashboard = () => {
     },
   };
   useEffect(() => {
-    dispatch(getAllStationsTC())
+
     // axios
       // .get(`https://api.waqi.info/feed/Aviles?token=${AQI_ACCESS_TOKEN}`)
       // // https://airnet.waqi.info/airnet/sse/historic/daily/341071?specie=pm25
@@ -63,6 +64,7 @@ const Dashboard = () => {
               element={<DashboardCountriesRating />}
             />
             <Route path={"/forecast"} element={<DashboardForecast />} />
+            <Route path={"/all-stations"} element={<DashboardAllStations/>}/>
           </Routes>
         </RoutesBox>
       </Box>
