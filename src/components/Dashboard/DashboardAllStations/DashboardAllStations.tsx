@@ -7,9 +7,11 @@ import { GetAllStationsStation } from "../../../redux/types/airQualitySliceType"
 import { Typography } from "../../../themeComponents/Typography";
 import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRating";
 import AccordionArrowSvg from "../../../svg/AccordionArrowSvg";
+import { inspect } from "util";
 
 const DashboardAllStations = () => {
   const dispatch = useAppDispatch();
+  const [searchValue, setSearchValue] = useState("");
   const allStations = useAppSelector(
     (state) => state.airQualitySlice.allStations
   );
@@ -18,18 +20,25 @@ const DashboardAllStations = () => {
       allStations?.map((station, index) => ({ ...station, place: index + 1 })),
     [allStations]
   );
-  const [page, setPage] = useState(2);
+  const searchedStations = useMemo(() => {
+    return allStationsWithPlace?.filter((station) => {
+      return station.n.toLowerCase().includes(searchValue.toLowerCase());
+    });
+  }, [searchValue,allStationsWithPlace]);
+  console.log();
+  const [page, setPage] = useState(1);
+
   const countOnOnePage = 10;
   const stationsToShow = useMemo(() => {
-    if (allStationsWithPlace) {
-      return allStationsWithPlace.slice(
+    if (searchedStations) {
+      return searchedStations.slice(
         countOnOnePage * page - countOnOnePage,
         countOnOnePage * page
       );
     } else {
       return [];
     }
-  }, [allStations, page]);
+  }, [searchedStations, page]);
   console.log({ allStations });
   useEffect(() => {
     dispatch(getAllStationsTC());
@@ -42,6 +51,9 @@ const DashboardAllStations = () => {
           setPage,
           allStationsWithPlace,
           countOnOnePage,
+          searchValue,
+          setSearchValue,
+          searchedStations,
         }}
       >
         <Box
@@ -54,7 +66,19 @@ const DashboardAllStations = () => {
               ...constants.boxSectionStyles,
               padding: "20px",
             }}
-          ></Box>
+          >
+            <Box sx={{
+                height:"48px"
+            }}>
+              <SearchInput
+                  placeholder={"Search..."}
+                value={searchValue}
+                onChange={(e) => {
+                  setSearchValue(e.target.value);
+                }}
+              />
+            </Box>
+          </Box>
           <Box
             sx={{
               width: "100%",
@@ -83,11 +107,11 @@ const DashboardAllStations = () => {
   );
 };
 const DashboardAllStationsPagination = () => {
-  const { page, setPage, allStationsWithPlace, countOnOnePage } = useContext(
+  const { page, setPage, countOnOnePage, searchedStations } = useContext(
     DashboardAllStationsContext
   );
-  const pagesNumber = allStationsWithPlace
-    ? Math.ceil(allStationsWithPlace?.length / countOnOnePage)
+  const pagesNumber = searchedStations
+    ? Math.ceil(searchedStations?.length / countOnOnePage)
     : 0;
   const pagesArray = new Array(pagesNumber)
     .fill(0)
@@ -112,7 +136,7 @@ const DashboardAllStationsPagination = () => {
     } else {
       return [page - 2, page - 1, page, page + 1, page + 2];
     }
-  }, [page]);
+  }, [pagesNumber, page]);
   return (
     <>
       <Box
@@ -235,6 +259,11 @@ const DashboardAllStationsStationComponent: React.FC<{
   );
 };
 const DashboardAllStationsContext = React.createContext({
+  searchedStations: [] as
+    | (GetAllStationsStation & { place: number })[]
+    | undefined,
+  searchValue: "",
+  setSearchValue: (searchValue: string) => {},
   countOnOnePage: 0,
   page: 1,
   setPage: (page: number) => {},
@@ -258,4 +287,12 @@ const PaginationButton = styled("button")<{ isActive?: boolean }>(
     transition: constants.transition,
   })
 );
+const SearchInput = styled("input")({
+    fontFamily:"Montserrat",
+    width:"100%",
+    height:"100%",
+    borderRadius:"10px",
+    paddingLeft:"20px",
+    outline:"none"
+});
 export default DashboardAllStations;
