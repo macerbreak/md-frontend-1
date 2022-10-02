@@ -49,6 +49,14 @@ const Sidebar = () => {
             >
                 All stations
             </SidebarButton>
+            <SidebarButton
+                isActive={pathname.includes("/history")}
+                onClick={() => {
+                    navigate("/history");
+                }}
+            >
+               History
+            </SidebarButton>
         </SidebarButtonsBox>
       </Box>
     </>

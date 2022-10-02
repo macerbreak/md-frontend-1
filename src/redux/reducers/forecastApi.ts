@@ -10,7 +10,7 @@ export const forecastApi = createApi({
   }),
   endpoints: (builder) => ({
     getCountryData: builder.query<CountryForForecastWithCities, unknown>({
-      query: (countryCode) => `https://waqi.info/rtdata/ranking/${countryCode}.json `,
+      query: (countryCode) => `https://waqi.info/rtdata/ranking/${countryCode}.json?t=${Date.now()} `,
       async onQueryStarted(_, {dispatch, queryFulfilled}) {
         try {
           await queryFulfilled;

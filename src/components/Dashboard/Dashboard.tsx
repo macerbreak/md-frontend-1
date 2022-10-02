@@ -10,6 +10,7 @@ import DashboardForecast from "./DashboardForecast";
 import { getAllStationsTC } from "../../redux/reducers/airQualitySlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import DashboardAllStations from "./DashboardAllStations";
+import DashboardHistory from "./DashboardHistory";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -25,8 +26,12 @@ const Dashboard = () => {
       // "content-type": "application/json, application/json charset=UTF-8",
     },
   };
+
   useEffect(() => {
+
     // axios
+    //     .get("http://localhost:5000/station-follows").then(console.log)
+        // .get( `https://api.waqi.info/feed/Lahore?token=${AQI_ACCESS_TOKEN}`)
     // .get(`https://api.waqi.info/feed/Aviles?token=${AQI_ACCESS_TOKEN}`)
     // // https://airnet.waqi.info/airnet/sse/historic/daily/341071?specie=pm25
     // //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
@@ -66,6 +71,7 @@ const Dashboard = () => {
             />
             <Route path={"/forecast"} element={<DashboardForecast />} />
             <Route path={"/all-stations"} element={<DashboardAllStations />} />
+            {/*<Route path={"/history"} element={<DashboardHistory/>}/>*/}
           </Routes>
         </RoutesBox>
       </Box>
