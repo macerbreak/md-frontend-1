@@ -12,7 +12,9 @@ export const getCityData = (latitude: number, longitude: number) => {
   );
 };
 export const getAllStations = () => {
-  return axios.get("https://waqi.info/rtdata/" + "?_="+Date.now()).then(res=>{
-    return axios.get(`https://waqi.info/rtdata/${res.data.path}/000.json`)
-  })
-}
+  return axios
+    .get("https://waqi.info/rtdata/" + "?_=" + Date.now())
+    .then((res) => {
+      return axios.get(`https://waqi.info/rtdata/${res.data.path}/000.json`);
+    });
+};

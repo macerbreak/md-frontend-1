@@ -3,15 +3,21 @@ import firstSlice from "./reducers/firstSlice";
 import { firstApi } from "./reducers/firstApi";
 import airQualitySlice from "./reducers/airQualitySlice";
 import { forecastApi } from "./reducers/forecastApi";
+import { airQualityApi } from "./reducers/airQualityApi";
 export const store = configureStore({
   reducer: {
     airQualitySlice,
     firstReducer: firstSlice,
     [firstApi.reducerPath]: firstApi.reducer,
     [forecastApi.reducerPath]: forecastApi.reducer,
+    [airQualityApi.reducerPath]: airQualityApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(firstApi.middleware, forecastApi.middleware),
+    getDefaultMiddleware().concat(
+      firstApi.middleware,
+      forecastApi.middleware,
+      airQualityApi.middleware
+    ),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

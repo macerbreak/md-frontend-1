@@ -90,3 +90,18 @@ export interface GetAllStationsStation {
   t: string;
   x: string;
 }
+
+export interface FollowsStationGeneralType {
+  country: string;
+  city: string;
+  station: FollowsStationType;
+}
+
+export interface FollowsStationType {
+  g: number[];
+  n: string;
+  u: Date;
+  a: string;
+  t: string;
+  x: string;
+}

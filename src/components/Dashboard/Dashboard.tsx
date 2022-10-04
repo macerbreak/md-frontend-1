@@ -11,6 +11,7 @@ import { getAllStationsTC } from "../../redux/reducers/airQualitySlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import DashboardAllStations from "./DashboardAllStations";
 import DashboardHistory from "./DashboardHistory";
+import DashboardFollows from "./DashboardFollows";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -28,10 +29,9 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-
     // axios
     //     .get("http://localhost:5000/station-follows").then(console.log)
-        // .get( `https://api.waqi.info/feed/Lahore?token=${AQI_ACCESS_TOKEN}`)
+    // .get( `https://api.waqi.info/feed/Lahore?token=${AQI_ACCESS_TOKEN}`)
     // .get(`https://api.waqi.info/feed/Aviles?token=${AQI_ACCESS_TOKEN}`)
     // // https://airnet.waqi.info/airnet/sse/historic/daily/341071?specie=pm25
     // //   .get(`https://waqi.info/rtdata/ranking/index2.json?_=${Date.now()}`)
@@ -72,6 +72,7 @@ const Dashboard = () => {
             <Route path={"/forecast"} element={<DashboardForecast />} />
             <Route path={"/all-stations"} element={<DashboardAllStations />} />
             {/*<Route path={"/history"} element={<DashboardHistory/>}/>*/}
+            <Route path={"/follows"} element={<DashboardFollows />} />
           </Routes>
         </RoutesBox>
       </Box>
