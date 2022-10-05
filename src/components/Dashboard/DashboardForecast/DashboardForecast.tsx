@@ -16,6 +16,7 @@ import {
 } from "../../../redux/types/forecastApiType";
 import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRating";
 import moment from "moment";
+import { useSetFollowCityMutation } from "../../../redux/reducers/airQualityApi";
 
 const useCountryButtonsBoxWidth = () => {
   const [width, setWidth] = useState(0);
@@ -71,8 +72,8 @@ const DashboardForecast = () => {
       >
         <ForecastBox>
           <DashboardForecastCountrySelect />
-            {selectedCountry && <DashboardForecastCitySelect />}
-            {selectedCity && <DashboardForecastTable />}
+          {selectedCountry && <DashboardForecastCitySelect />}
+          {selectedCity && <DashboardForecastTable />}
         </ForecastBox>
       </DashboardForecastContext.Provider>
     </>
@@ -324,7 +325,19 @@ const DashboardForecastCitySelect = () => {
   const { countryData, selectedCity, setSelectedCity } = useContext(
     DashboardForecastContext
   );
+  const [setFollowCountryCallback, { data: setFollowCountryData }] =
+    useSetFollowCityMutation();
+  console.log({ countryData });
   const countryDataToShow = countryData?.cities ?? [];
+  const handleFollow = (e: { stopPropagation: () => void }, city: string) => {
+    e.stopPropagation();
+    if (countryData?.country?.country && city) {
+      setFollowCountryCallback({
+        country: countryData.country.country,
+        city,
+      });
+    }
+  };
   return (
     <>
       <ForecastListBox
@@ -364,6 +377,9 @@ const DashboardForecastCitySelect = () => {
                 <Typography>
                   {moment(city.station.u).format("YYYY-MM-DD HH:mm")}
                 </Typography>
+                <FollowButton onClick={(e) => handleFollow(e, city.city)}>
+                  Follow
+                </FollowButton>
                 <Box
                   sx={{
                     width: "60px",
@@ -450,6 +466,7 @@ const DashboardForecastCountrySelect = () => {
     </>
   );
 };
+const FollowButton = styled("button")({});
 const ForecastRegionButton = styled("button")<{ active: boolean }>(
   ({ active }) => ({
     display: "flex",
@@ -493,7 +510,7 @@ const ForecastListBox = styled(Box)<{ gridForCountriesBox?: string }>(
 const CityButton = styled(Box)<{ active: boolean }>(({ active }) => ({
   marginBottom: "20px",
   display: "grid",
-  gridTemplateColumns: "40px 150px 200px 1fr 60px",
+  gridTemplateColumns: "40px 150px 200px 1fr 100px 60px",
   cursor: "pointer",
   alignItems: "center",
   padding: "0px 20px",

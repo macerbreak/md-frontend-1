@@ -40,8 +40,11 @@ const DashboardFollowsStation: React.FC<{
   index: number;
   followsStation: FollowsStationGeneralType;
 }> = ({ index, followsStation }) => {
-  const { city, country, station } = followsStation;
-  const aqiColors = getAqiColors(+station.a);
+  // const { city, country, station } = followsStation;
+  const city = followsStation?.city;
+  const country = followsStation?.country;
+  const station = followsStation?.station;
+  const aqiColors = getAqiColors(+station?.a);
   return (
     <>
       <Box
@@ -55,6 +58,7 @@ const DashboardFollowsStation: React.FC<{
           alignItems: "center",
           display: "grid",
           gridTemplateColumns: "50px 70px 1fr 1fr 1fr 60px",
+          marginBottom: "20px",
         }}
       >
         <Typography
@@ -77,9 +81,9 @@ const DashboardFollowsStation: React.FC<{
           <img src={getCountryFlag(country)} />
         </Box>
         <Typography>{city}</Typography>
-        <Typography>{station.n}</Typography>
+        <Typography>{station?.n}</Typography>
         <Typography>
-          {station.g[0]}, {station.g[1]}
+          {station?.g?.[0]}, {station?.g?.[1]}
         </Typography>
         <Box
           sx={{
@@ -95,7 +99,7 @@ const DashboardFollowsStation: React.FC<{
             ...aqiColors,
           }}
         >
-          {station.a}
+          {station?.a}
         </Box>
       </Box>
     </>
