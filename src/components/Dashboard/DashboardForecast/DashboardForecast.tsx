@@ -8,7 +8,10 @@ import { getCountriesWithNamesAndFlagsArray } from "../../../utils/getCountriesW
 import { Box, styled } from "@mui/material";
 import { constants } from "../../../system/constants";
 import { Typography } from "../../../themeComponents/Typography";
-import { City } from "../../../redux/types/airQualitySliceType";
+import {
+  City,
+  FollowsStationGeneralType,
+} from "../../../redux/types/airQualitySliceType";
 import { useGetCountryDataQuery } from "../../../redux/reducers/forecastApi";
 import {
   CityForForecast,
@@ -16,7 +19,11 @@ import {
 } from "../../../redux/types/forecastApiType";
 import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRating";
 import moment from "moment";
-import { useSetFollowCityMutation } from "../../../redux/reducers/airQualityApi";
+import {
+  useDeleteFollowCityMutation,
+  useGetFollowsQuery,
+  useSetFollowCityMutation,
+} from "../../../redux/reducers/airQualityApi";
 
 const useCountryButtonsBoxWidth = () => {
   const [width, setWidth] = useState(0);
@@ -42,6 +49,8 @@ const DashboardForecast = () => {
   const [selectedCity, setSelectedCity] = useState<CityForForecast | null>(
     null
   );
+  const { data: followsData, refetch: refetchFollows } = useGetFollowsQuery("");
+
   const { data: countryData, refetch: refetchCountryData } =
     useGetCountryDataQuery(selectedCountry?.country);
   useEffect(() => {
@@ -57,7 +66,9 @@ const DashboardForecast = () => {
   useEffect(() => {
     dispatch(getCountriesRatingTC());
   }, []);
-
+  useEffect(() => {
+    refetchFollows();
+  }, []);
   return (
     <>
       <DashboardForecastContext.Provider
@@ -68,6 +79,8 @@ const DashboardForecast = () => {
           setSelectedCountry,
           selectedCity,
           setSelectedCity,
+          followsData,
+          refetchFollows,
         }}
       >
         <ForecastBox>
@@ -322,11 +335,18 @@ const DashboardForecastTable = () => {
   );
 };
 const DashboardForecastCitySelect = () => {
-  const { countryData, selectedCity, setSelectedCity } = useContext(
-    DashboardForecastContext
-  );
+  const {
+    countryData,
+    selectedCity,
+    setSelectedCity,
+    followsData,
+    refetchFollows,
+  } = useContext(DashboardForecastContext);
+  console.log({ followsData });
   const [setFollowCountryCallback, { data: setFollowCountryData }] =
     useSetFollowCityMutation();
+  const [deleteFollowStationCallback, { data: deleteFollowStationData }] =
+    useDeleteFollowCityMutation();
   console.log({ countryData });
   const countryDataToShow = countryData?.cities ?? [];
   const handleFollow = (e: { stopPropagation: () => void }, city: string) => {
@@ -335,8 +355,16 @@ const DashboardForecastCitySelect = () => {
       setFollowCountryCallback({
         country: countryData.country.country,
         city,
+        refetchFollows,
       });
     }
+  };
+  const handleUnfollow = (
+    e: { stopPropagation: () => void },
+    cityId: number
+  ) => {
+    e.stopPropagation();
+    deleteFollowStationCallback({ stationId: cityId, refetchFollows });
   };
   return (
     <>
@@ -348,6 +376,13 @@ const DashboardForecastCitySelect = () => {
       >
         {countryDataToShow?.map((city, index) => {
           const aqiColors = getAqiColors(+city.station.a);
+          const isFollowed =
+            (followsData?.filter((followCity) => followCity.city === city.city)
+              ?.length ?? 0) > 0;
+          const followCityId =
+            followsData?.filter(
+              (followCity) => followCity.city === city.city
+            )?.[0]?.id ?? 0;
           return (
             <>
               <CityButton
@@ -377,8 +412,16 @@ const DashboardForecastCitySelect = () => {
                 <Typography>
                   {moment(city.station.u).format("YYYY-MM-DD HH:mm")}
                 </Typography>
-                <FollowButton onClick={(e) => handleFollow(e, city.city)}>
-                  Follow
+                <FollowButton
+                  onClick={(e) => {
+                    if (isFollowed) {
+                      handleUnfollow(e, followCityId);
+                    } else {
+                      handleFollow(e, city.city);
+                    }
+                  }}
+                >
+                  {isFollowed ? "Unfollow" : "Follow"}
                 </FollowButton>
                 <Box
                   sx={{
@@ -466,7 +509,18 @@ const DashboardForecastCountrySelect = () => {
     </>
   );
 };
-const FollowButton = styled("button")({});
+const FollowButton = styled("button")({
+  fontFamily: "Montserrat",
+  width: "80px",
+  borderRadius: "5px",
+  "&:hover": {
+    backgroundColor: constants.colors.aqiIndex.veryUnhealthyBackground,
+    color: "white",
+    fontWeight: "500",
+    transition: constants.transition,
+  },
+  transition: constants.transition,
+});
 const ForecastRegionButton = styled("button")<{ active: boolean }>(
   ({ active }) => ({
     display: "flex",
@@ -528,6 +582,8 @@ const CityButton = styled(Box)<{ active: boolean }>(({ active }) => ({
   transition: constants.transition,
 }));
 const DashboardForecastContext = React.createContext({
+  refetchFollows: () => {},
+  followsData: [] as FollowsStationGeneralType[] | undefined,
   countriesWithNamesAndFlagsArray: [] as {
     flag: string;
     countryName: string;

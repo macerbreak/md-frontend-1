@@ -7,6 +7,7 @@ interface setFollowCitySendObjectType {
   city: string;
   latitude?: number;
   longitude?: number;
+  refetchFollows?:()=>void
 }
 // Define a service using a base URL and expected endpoints
 export const airQualityApi = createApi({
@@ -24,11 +25,26 @@ export const airQualityApi = createApi({
       query: (station) => ({
         url: `/station-follows`,
         method: "POST",
-        body: { ...station },
+        body: { country: station.country,
+          city: station.city,
+          latitude: station?.latitude,
+          longitude: station?.longitude },
       }),
-      async onQueryStarted(_, { queryFulfilled }) {
+      async onQueryStarted(args, { queryFulfilled }) {
         const setFollowCityResponse = await queryFulfilled;
+        if(args.refetchFollows){args.refetchFollows()}
         console.log({ setFollowCityResponse });
+      },
+    }),
+    deleteFollowCity: builder.mutation<unknown, { stationId:number, refetchFollows?:()=>void} >({
+      query: (args) => ({
+        url: `/station-follows`,
+        method: "DELETE",
+        body: { stationId:args.stationId },
+      }),
+      async onQueryStarted(args, { queryFulfilled }) {
+        const deleteFollowCityResponse = await queryFulfilled;
+        if(args.refetchFollows){args.refetchFollows()}
       },
     }),
   }),
@@ -36,4 +52,4 @@ export const airQualityApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetFollowsQuery, useSetFollowCityMutation } = airQualityApi;
+export const { useGetFollowsQuery, useSetFollowCityMutation, useDeleteFollowCityMutation } = airQualityApi;

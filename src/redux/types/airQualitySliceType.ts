@@ -95,6 +95,7 @@ export interface FollowsStationGeneralType {
   country: string;
   city: string;
   station: FollowsStationType;
+  id:number
 }
 
 export interface FollowsStationType {
