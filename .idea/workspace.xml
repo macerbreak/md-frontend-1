@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="add to follows possibility">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/airQualityApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/airQualityApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types/airQualitySliceType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/airQualitySliceType.ts" afterDir="false" />
-    </list>
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="add to unfollow possibility" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +94,7 @@
       <workItem from="1664823380516" duration="995000" />
       <workItem from="1664911070920" duration="3903000" />
       <workItem from="1664997915029" duration="2947000" />
-      <workItem from="1665082828137" duration="3173000" />
+      <workItem from="1665082828137" duration="3990000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -297,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665000644746</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="add to unfollow possibility">
+      <created>1665086822028</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1665086822028</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +341,8 @@
     <MESSAGE value="tried to add history" />
     <MESSAGE value="display follow stations" />
     <MESSAGE value="add to follows possibility" />
-    <option name="LAST_COMMIT_MESSAGE" value="add to follows possibility" />
+    <MESSAGE value="add to unfollow possibility" />
+    <option name="LAST_COMMIT_MESSAGE" value="add to unfollow possibility" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
