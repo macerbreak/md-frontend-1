@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import DashboardAllStations from "./DashboardAllStations";
 import DashboardHistory from "./DashboardHistory";
 import DashboardFollows from "./DashboardFollows";
+import DashboardHome from "./DashboardHome";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -63,6 +64,7 @@ const Dashboard = () => {
         <Sidebar />
         <RoutesBox>
           <Routes>
+            <Route path={"/home"} element={<DashboardHome />} />
             <Route path={"/map"} element={<DashboardPollutionMap />} />
 
             <Route

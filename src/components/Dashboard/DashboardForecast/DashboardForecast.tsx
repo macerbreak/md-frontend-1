@@ -342,12 +342,10 @@ const DashboardForecastCitySelect = () => {
     followsData,
     refetchFollows,
   } = useContext(DashboardForecastContext);
-  console.log({ followsData });
   const [setFollowCountryCallback, { data: setFollowCountryData }] =
     useSetFollowCityMutation();
   const [deleteFollowStationCallback, { data: deleteFollowStationData }] =
     useDeleteFollowCityMutation();
-  console.log({ countryData });
   const countryDataToShow = countryData?.cities ?? [];
   const handleFollow = (e: { stopPropagation: () => void }, city: string) => {
     e.stopPropagation();

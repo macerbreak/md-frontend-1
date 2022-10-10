@@ -18,3 +18,8 @@ export const getAllStations = () => {
       return axios.get(`https://waqi.info/rtdata/${res.data.path}/000.json`);
     });
 };
+export const getLocationData = (latitude: number, longitude: number) => {
+  return axios.get(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+  );
+};

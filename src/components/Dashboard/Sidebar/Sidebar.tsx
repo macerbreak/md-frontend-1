@@ -18,6 +18,15 @@ const Sidebar = () => {
       >
         <SidebarButtonsBox>
           <SidebarButton
+            isActive={pathname.includes("/home")}
+            onClick={() => {
+              navigate("/home");
+            }}
+          >
+            <SidebarMapButtonSvg />
+            Home
+          </SidebarButton>
+          <SidebarButton
             isActive={pathname.includes("/map")}
             onClick={() => {
               navigate("/map");
@@ -50,14 +59,14 @@ const Sidebar = () => {
           >
             All stations
           </SidebarButton>
-          <SidebarButton
-            isActive={pathname.includes("/history")}
-            onClick={() => {
-              navigate("/history");
-            }}
-          >
-            History
-          </SidebarButton>
+          {/*<SidebarButton*/}
+          {/*  isActive={pathname.includes("/history")}*/}
+          {/*  onClick={() => {*/}
+          {/*    navigate("/history");*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  History*/}
+          {/*</SidebarButton>*/}
           <SidebarButton
             isActive={pathname.includes("/follows")}
             onClick={() => {
