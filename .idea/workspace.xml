@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="get current location for home page">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="adding info for home page">
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecastTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/Chart3.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating/Chart3.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardForecast/DashboardForecast.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHome/DashboardHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHome/DashboardHome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types/forecastApiType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/forecastApiType.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -101,7 +103,8 @@
       <workItem from="1665082828137" duration="3990000" />
       <workItem from="1665169765199" duration="58000" />
       <workItem from="1665427452037" duration="4323000" />
-      <workItem from="1665513298101" duration="3907000" />
+      <workItem from="1665513298101" duration="4164000" />
+      <workItem from="1665598720582" duration="2406000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -320,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665431452364</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="adding info for home page">
+      <created>1665517466588</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1665517466588</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +349,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="redux toolkit connected" />
     <MESSAGE value="integrated air quality map" />
     <MESSAGE value="routing in progress" />
     <MESSAGE value="styled map page, adding sidebar buttons" />
@@ -364,7 +373,8 @@
     <MESSAGE value="add to unfollow possibility" />
     <MESSAGE value="add to unfollow possibility to Follows page" />
     <MESSAGE value="get current location for home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="get current location for home page" />
+    <MESSAGE value="adding info for home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding info for home page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

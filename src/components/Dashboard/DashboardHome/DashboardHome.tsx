@@ -8,6 +8,8 @@ import {getCountryFlag} from "../../../utils/getCountryFlag";
 import {constants} from "../../../system/constants";
 import LineChart from "../DashboardCountriesRating/Chart3";
 import {Typography} from "../../../themeComponents/Typography";
+import DashboardForecastTable from "../DashboardForecast/DashboardForecastTable";
+import {CityForecastResponseData} from "../../../redux/types/airQualitySliceType";
 
 interface CurrentLocationType {
   countryCode: string;
@@ -29,7 +31,7 @@ const getLocationDataTC =
   };
 const DashboardHome = () => {
   const dispatch = useAppDispatch();
-  const [cityData, setCityData] = useState<null|unknown>(null)
+  const [cityData, setCityData] = useState<null| { data:unknown}>(null)
   const [currentLocation, setCurrentLocation] =
     useState<CurrentLocationType | null>(null);
   const countryFlag = useMemo(()=> {
@@ -48,8 +50,9 @@ const DashboardHome = () => {
   }) => {
     const { latitude, longitude } = position.coords;
     dispatch(getLocationDataTC(latitude, longitude, setCurrentLocation));
-    dispatch(getCityHomeDataTC(latitude, longitude,setCityData))
+    dispatch(getCityHomeDataTC(latitude, longitude,setCityData as (cityDate: unknown) => void))
   };
+  console.log({cityData})
   const errorLocation = (error: unknown) => {
     console.log({ error });
   };
@@ -88,14 +91,15 @@ const DashboardHome = () => {
             width:"67%",
             height:"300px"
           }}>
-            <LineChart countryData={countryData?.country.evolution as [number, number][]} />
+            <LineChart countryData={countryData?.country?.evolution as [number, number][]} />
           </SectionBox>
         </Box>
 
         <SectionBox sx={{
           width:"40%",
           height:"300px",
-          padding:"20px"
+          padding:"20px",
+          marginBottom:"30px"
         }}>
           <Typography sx={{
             fontWeight:"600",
@@ -107,6 +111,7 @@ const DashboardHome = () => {
             <LocationItemTypography>{currentLocation?.countryName}</LocationItemTypography>
           </LocationItemBox>
         </SectionBox>
+        <DashboardForecastTable cityForecastResponse={cityData?.data as CityForecastResponseData | null}/>
       </Box>
     </DashboardHomeContext.Provider>
   </>;

@@ -85,11 +85,11 @@ const accessors = {
 const LineChart:React.FC<{
     countryData:[number,number][]
 }> = ({countryData}) => {
-    const data1ForSort = countryData.map(country=>({
+    const data1ForSort = countryData?.map(country=>({
         x: moment(new Date(country[1]*1000)).format("MM/DD HH:mm"),
         y:country[0]
-    }))
-    const data1 = data1ForSort.reverse()
+    })) ?? []
+    const data1 = data1ForSort?.reverse()
     return (
         <XYChart height={300} xScale={{ type: "band" }} yScale={{ type: "linear" }}>
             <AnimatedAxis orientation="bottom" />
