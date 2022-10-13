@@ -10,10 +10,15 @@ import LineChart from "../DashboardCountriesRating/Chart3";
 import {Typography} from "../../../themeComponents/Typography";
 import DashboardForecastTable from "../DashboardForecast/DashboardForecastTable";
 import {CityForecastResponseData} from "../../../redux/types/airQualitySliceType";
+import {getAqiColors} from "../DashboardCountriesRating/DashboardCountriesRating";
 
 interface CurrentLocationType {
   countryCode: string;
-  countryName:string
+  countryName:string,
+  city:string
+  continent:string
+  latitude:number
+  longitude:number
 }
 const getCityHomeDataTC = (latitude: number, longitude: number, setCityData:(cityDate:unknown)=>void) => async () => {
   const getCityDataResponse = await getCityData(latitude,longitude)
@@ -31,9 +36,10 @@ const getLocationDataTC =
   };
 const DashboardHome = () => {
   const dispatch = useAppDispatch();
-  const [cityData, setCityData] = useState<null| { data:unknown}>(null)
+  const [cityData, setCityData] = useState<null| { data: { aqi:number} }>(null)
   const [currentLocation, setCurrentLocation] =
     useState<CurrentLocationType | null>(null);
+  const aqiColors = getAqiColors(cityData?.data?.aqi ?? 0);
   const countryFlag = useMemo(()=> {
     if(currentLocation?.countryCode){
       return getCountryFlag(currentLocation?.countryCode)
@@ -52,7 +58,6 @@ const DashboardHome = () => {
     dispatch(getLocationDataTC(latitude, longitude, setCurrentLocation));
     dispatch(getCityHomeDataTC(latitude, longitude,setCityData as (cityDate: unknown) => void))
   };
-  console.log({cityData})
   const errorLocation = (error: unknown) => {
     console.log({ error });
   };
@@ -62,6 +67,7 @@ const DashboardHome = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(setLocation, errorLocation);
   }, []);
+  {console.log({currentLocation, cityData})}
   return <>
     <DashboardHomeContext.Provider value={{
 
@@ -96,10 +102,13 @@ const DashboardHome = () => {
         </Box>
 
         <SectionBox sx={{
-          width:"40%",
-          height:"300px",
+          width:"320px",
+          height:"320px",
           padding:"20px",
-          marginBottom:"30px"
+          marginBottom:"30px",
+          display:"flex",
+          flexDirection:"column",
+          // alignItems:"center"
         }}>
           <Typography sx={{
             fontWeight:"600",
@@ -108,9 +117,45 @@ const DashboardHome = () => {
           }}>Your Location</Typography>
           <LocationItemBox>
             <LocationItemTypography>Country:</LocationItemTypography>
-            <LocationItemTypography>{currentLocation?.countryName}</LocationItemTypography>
+            <LocationItemTypographyValue>{currentLocation?.countryName}</LocationItemTypographyValue>
+          </LocationItemBox>
+          <LocationItemBox>
+            <LocationItemTypography>City:</LocationItemTypography>
+            <LocationItemTypographyValue>{currentLocation?.city}</LocationItemTypographyValue>
+          </LocationItemBox>
+          <LocationItemBox>
+            <LocationItemTypography>Continent:</LocationItemTypography>
+            <LocationItemTypographyValue>{currentLocation?.continent}</LocationItemTypographyValue>
+          </LocationItemBox>
+          <LocationItemBox>
+            <LocationItemTypography>Latitude:</LocationItemTypography>
+            <LocationItemTypographyValue>{currentLocation?.latitude}</LocationItemTypographyValue>
+          </LocationItemBox>
+          <LocationItemBox>
+            <LocationItemTypography>Longitude:</LocationItemTypography>
+            <LocationItemTypographyValue>{currentLocation?.longitude}</LocationItemTypographyValue>
+          </LocationItemBox>
+          <LocationItemBox>
+            <LocationItemTypography>AQI:</LocationItemTypography>
+            <Box
+                sx={{
+                  width: "60px",
+                  height: "32px",
+                  borderRadius: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: "600",
+                  fontSize: "18px",
+                  fontFamily: "Montserrat",
+                  ...aqiColors,
+                }}
+            >
+              {cityData?.data?.aqi}
+            </Box>
           </LocationItemBox>
         </SectionBox>
+
         <DashboardForecastTable cityForecastResponse={cityData?.data as CityForecastResponseData | null}/>
       </Box>
     </DashboardHomeContext.Provider>
@@ -121,9 +166,20 @@ const DashboardHomeContext = React.createContext({
 
 })
 const LocationItemTypography = styled(Typography)({
-  fontSize:"20px"
+  fontSize:"20px",
+  width:"120px",
+  marginLeft:"30px"
+})
+const LocationItemTypographyValue = styled(LocationItemTypography)({
+  // display:"flex",
+  // justifyContent:"flex-end"
+  // marginLeft:"30px"
+  marginLeft:"0px"
 })
 const LocationItemBox = styled(Box)({
+    marginBottom:"10px",
+  // display:"grid",
+  // gridTemplateColumns:"120px 150px"
   display:"flex"
 })
 const SectionBox = styled(Box)({
