@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="home forecast">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="home location">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHome/DashboardHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHome/DashboardHome.tsx" afterDir="false" />
     </list>
@@ -102,7 +102,8 @@
       <workItem from="1665427452037" duration="4323000" />
       <workItem from="1665513298101" duration="4164000" />
       <workItem from="1665598720582" duration="2615000" />
-      <workItem from="1665684970177" duration="3194000" />
+      <workItem from="1665684970177" duration="3234000" />
+      <workItem from="1665772948150" duration="1950000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -335,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665601342279</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="home location">
+      <created>1665688207646</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1665688207646</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +362,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="routing in progress" />
     <MESSAGE value="styled map page, adding sidebar buttons" />
     <MESSAGE value="styled sidebar buttons" />
     <MESSAGE value="trying to find ids" />
@@ -379,7 +386,8 @@
     <MESSAGE value="get current location for home page" />
     <MESSAGE value="adding info for home page" />
     <MESSAGE value="home forecast" />
-    <option name="LAST_COMMIT_MESSAGE" value="home forecast" />
+    <MESSAGE value="home location" />
+    <option name="LAST_COMMIT_MESSAGE" value="home location" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

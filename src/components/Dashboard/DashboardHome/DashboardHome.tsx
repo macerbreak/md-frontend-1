@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useContext, useEffect, useMemo, useState} from "react";
 import { Dispatch } from "@reduxjs/toolkit";
 import {getCityData, getLocationData} from "../../../api";
 import { useAppDispatch } from "../../../redux/hooks";
@@ -11,6 +11,9 @@ import {Typography} from "../../../themeComponents/Typography";
 import DashboardForecastTable from "../DashboardForecast/DashboardForecastTable";
 import {CityForecastResponseData} from "../../../redux/types/airQualitySliceType";
 import {getAqiColors} from "../DashboardCountriesRating/DashboardCountriesRating";
+import {useDeleteFollowCityMutation, useSetFollowCityMutation} from "../../../redux/reducers/airQualityApi";
+import moment from "moment";
+import {CountryForForecastWithCities} from "../../../redux/types/forecastApiType";
 
 interface CurrentLocationType {
   countryCode: string;
@@ -48,7 +51,6 @@ const DashboardHome = () => {
       return ""
     }
   },[currentLocation])
-  console.log({currentLocation})
   const { data: countryData, refetch: refetchCountryData } =
       useGetCountryDataQuery(currentLocation?.countryCode);
   const setLocation = (position: {
@@ -100,71 +102,187 @@ const DashboardHome = () => {
             <LineChart countryData={countryData?.country?.evolution as [number, number][]} />
           </SectionBox>
         </Box>
-
-        <SectionBox sx={{
-          width:"320px",
-          height:"320px",
-          padding:"20px",
-          marginBottom:"30px",
+        <Box sx={{
           display:"flex",
-          flexDirection:"column",
-          // alignItems:"center"
+
         }}>
-          <Typography sx={{
-            fontWeight:"600",
-            fontSize:"26px",
-            textAlign:"center",
-          }}>Your Location</Typography>
-          <LocationItemBox>
-            <LocationItemTypography>Country:</LocationItemTypography>
-            <LocationItemTypographyValue>{currentLocation?.countryName}</LocationItemTypographyValue>
-          </LocationItemBox>
-          <LocationItemBox>
-            <LocationItemTypography>City:</LocationItemTypography>
-            <LocationItemTypographyValue>{currentLocation?.city}</LocationItemTypographyValue>
-          </LocationItemBox>
-          <LocationItemBox>
-            <LocationItemTypography>Continent:</LocationItemTypography>
-            <LocationItemTypographyValue>{currentLocation?.continent}</LocationItemTypographyValue>
-          </LocationItemBox>
-          <LocationItemBox>
-            <LocationItemTypography>Latitude:</LocationItemTypography>
-            <LocationItemTypographyValue>{currentLocation?.latitude}</LocationItemTypographyValue>
-          </LocationItemBox>
-          <LocationItemBox>
-            <LocationItemTypography>Longitude:</LocationItemTypography>
-            <LocationItemTypographyValue>{currentLocation?.longitude}</LocationItemTypographyValue>
-          </LocationItemBox>
-          <LocationItemBox>
-            <LocationItemTypography>AQI:</LocationItemTypography>
-            <Box
-                sx={{
-                  width: "60px",
-                  height: "32px",
-                  borderRadius: "10px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: "600",
-                  fontSize: "18px",
-                  fontFamily: "Montserrat",
-                  ...aqiColors,
-                }}
-            >
-              {cityData?.data?.aqi}
-            </Box>
-          </LocationItemBox>
-        </SectionBox>
+          <SectionBox sx={{
+            width:"320px",
+            height:"320px",
+            padding:"20px",
+            marginBottom:"30px",
+            display:"flex",
+            flexDirection:"column",
+            // alignItems:"center"
+          }}>
+            <Typography sx={{
+              fontWeight:"600",
+              fontSize:"26px",
+              textAlign:"center",
+            }}>Your Location</Typography>
+            <LocationItemBox>
+              <LocationItemTypography>Country:</LocationItemTypography>
+              <LocationItemTypographyValue>{currentLocation?.countryName}</LocationItemTypographyValue>
+            </LocationItemBox>
+            <LocationItemBox>
+              <LocationItemTypography>City:</LocationItemTypography>
+              <LocationItemTypographyValue>{currentLocation?.city}</LocationItemTypographyValue>
+            </LocationItemBox>
+            <LocationItemBox>
+              <LocationItemTypography>Continent:</LocationItemTypography>
+              <LocationItemTypographyValue>{currentLocation?.continent}</LocationItemTypographyValue>
+            </LocationItemBox>
+            <LocationItemBox>
+              <LocationItemTypography>Latitude:</LocationItemTypography>
+              <LocationItemTypographyValue>{currentLocation?.latitude}</LocationItemTypographyValue>
+            </LocationItemBox>
+            <LocationItemBox>
+              <LocationItemTypography>Longitude:</LocationItemTypography>
+              <LocationItemTypographyValue>{currentLocation?.longitude}</LocationItemTypographyValue>
+            </LocationItemBox>
+            <LocationItemBox>
+              <LocationItemTypography>AQI:</LocationItemTypography>
+              <Box
+                  sx={{
+                    width: "60px",
+                    height: "32px",
+                    borderRadius: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    fontFamily: "Montserrat",
+                    ...aqiColors,
+                  }}
+              >
+                {cityData?.data?.aqi}
+              </Box>
+            </LocationItemBox>
+          </SectionBox>
+          <DashboardHomeCities countryData={countryData}/>
+        </Box>
+
 
         <DashboardForecastTable cityForecastResponse={cityData?.data as CityForecastResponseData | null}/>
       </Box>
     </DashboardHomeContext.Provider>
   </>;
 };
+const DashboardHomeCities:React.FC<{
+  countryData?:CountryForForecastWithCities
+}> = ({countryData}) => {
+  const countryDataToShow = useMemo(()=>{
+    if(countryData?.cities){
+      return countryData?.cities?.filter(city=>+city.station.a>=100)
+    }
+    else{
+      return []
+    }
+  },[countryData])
 
+  return (
+      <>
+        <ForecastListBox
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+        >
+          {countryDataToShow?.map((city, index) => {
+            const aqiColors = getAqiColors(+city.station.a);
+            return (
+                <>
+                  <CityButton
+                      onClick={() => {
+                      }}
+                      key={index}
+                  >
+                    <Typography
+                        sx={{
+                          fontWeight: "600",
+                          marginRight: "20px",
+                          whiteSpace: "nowrap",
+                        }}
+                    >
+                      {index + 1}
+                    </Typography>
+                    <Typography
+                        sx={{
+                          fontWeight: "600",
+                        }}
+                    >
+                      {city.city.slice(0, 10)}
+                    </Typography>
+                    <Typography>{city.station.n.slice(0, 20)}</Typography>
+                    <Typography>
+                      {moment(city.station.u).format("YYYY-MM-DD HH:mm")}
+                    </Typography>
+                    <Box
+                        sx={{
+                          width: "60px",
+                          height: "32px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderRadius: "10px",
+                          fontWeight: "600",
+                          ...aqiColors,
+                        }}
+                    >
+                      {city.station.a}
+                    </Box>
+                  </CityButton>
+                </>
+            );
+          })}
+        </ForecastListBox>
+      </>
+  );
+};
 const DashboardHomeContext = React.createContext({
 
 })
+const ForecastListBox = styled(Box)<{ gridForCountriesBox?: string }>(
+    ({ gridForCountriesBox }) => ({
+      width:"calc(100% - 340px)",
+      backgroundColor: constants.colors.sidebar,
+      borderRadius: "30px",
+      boxShadow: "0px 0px 35px -9px rgba(0,0,0,0.75)",
+      border: "5px solid white",
+      height: "auto",
+      maxHeight: "320px",
+      marginBottom: "20px",
+      padding: "20px ",
+      overflowY: "scroll",
+      marginLeft:"20px",
+      display: "grid",
+      gridTemplateColumns: gridForCountriesBox ?? "1fr 1fr 1fr 1fr 1fr 1fr 1fr ",
+      "&::-webkit-scrollbar": {
+        width: "0px",
+      },
+    })
+);
+const CityButton = styled(Box)({
+  marginBottom: "20px",
+  display: "grid",
+  gridTemplateColumns: "40px 150px 200px 1fr 60px",
+  cursor: "pointer",
+  alignItems: "center",
+  padding: "0px 20px",
+  width: "100%",
+  height: "50px",
+  minHeight: "50px",
+  borderRadius: "10px",
+  border: "0px solid white",
+  backgroundColor:  "transparent",
+  "&:hover": {
+    border: "3px solid white",
+    backgroundColor: "rgba(255,255,255,0.5)",
+    transition: constants.transition,
+  },
+  transition: constants.transition,
+});
 const LocationItemTypography = styled(Typography)({
   fontSize:"20px",
   width:"120px",
