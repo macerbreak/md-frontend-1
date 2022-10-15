@@ -13,6 +13,7 @@ import DashboardAllStations from "./DashboardAllStations";
 import DashboardHistory from "./DashboardHistory";
 import DashboardFollows from "./DashboardFollows";
 import DashboardHome from "./DashboardHome";
+import DashboardDescription from "./DashboardDescription";
 
 const AQI_ACCESS_TOKEN = process.env.REACT_APP_AQI_ACCESS_TOKEN;
 const Dashboard = () => {
@@ -75,6 +76,7 @@ const Dashboard = () => {
             <Route path={"/all-stations"} element={<DashboardAllStations />} />
             {/*<Route path={"/history"} element={<DashboardHistory/>}/>*/}
             <Route path={"/follows"} element={<DashboardFollows />} />
+            <Route path={"/description"} element={<DashboardDescription/>}/>
           </Routes>
         </RoutesBox>
       </Box>

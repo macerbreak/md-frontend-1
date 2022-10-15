@@ -174,12 +174,13 @@ const DashboardHomeCities:React.FC<{
 }> = ({countryData}) => {
   const countryDataToShow = useMemo(()=>{
     if(countryData?.cities){
-      return countryData?.cities?.filter(city=>+city.station.a>=100)
+      return countryData?.cities?.filter((city, index)=>(+city.station.a>=100)||(index<=9))
     }
     else{
       return []
     }
   },[countryData])
+  console.log({countryData})
 
   return (
       <>

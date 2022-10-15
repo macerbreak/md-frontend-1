@@ -75,6 +75,14 @@ const Sidebar = () => {
           >
             Follows
           </SidebarButton>
+            <SidebarButton
+                isActive={pathname.includes("/description")}
+                onClick={() => {
+                    navigate("/description");
+                }}
+            >
+                Description
+            </SidebarButton>
         </SidebarButtonsBox>
       </Box>
     </>
