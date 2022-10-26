@@ -16,7 +16,7 @@ const DashboardFollows = () => {
   const filteredFollowsData = useMemo(() => {
     if (isDisplayedCritical) {
       return followsData?.filter(
-        (followsDataItem) => +followsDataItem.station.a >= 100
+        (followsDataItem) => +followsDataItem?.station?.a >= 100
       );
     } else {
       return followsData;

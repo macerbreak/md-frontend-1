@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="home cities">
-      <change afterPath="$PROJECT_DIR$/src/assets/img/aqiDescription.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardDescription/DashboardDescription.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardDescription/constants/appellations.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardDescription/index.ts" afterDir="false" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="description page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHome/DashboardHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHome/DashboardHome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardFollows/DashboardFollows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardFollows/DashboardFollows.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/airQualityApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/airQualityApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +108,10 @@
       <workItem from="1665598720582" duration="2615000" />
       <workItem from="1665684970177" duration="3234000" />
       <workItem from="1665772948150" duration="2404000" />
-      <workItem from="1665828482503" duration="5094000" />
+      <workItem from="1665828482503" duration="5190000" />
+      <workItem from="1665937627769" duration="666000" />
+      <workItem from="1666554357675" duration="629000" />
+      <workItem from="1666807681797" duration="6289000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -357,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665775392723</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="description page">
+      <created>1665834825443</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1665834825443</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +384,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="styled sidebar buttons" />
     <MESSAGE value="trying to find ids" />
     <MESSAGE value="get rating" />
     <MESSAGE value="added countries rating list" />
@@ -401,7 +408,8 @@
     <MESSAGE value="home forecast" />
     <MESSAGE value="home location" />
     <MESSAGE value="home cities" />
-    <option name="LAST_COMMIT_MESSAGE" value="home cities" />
+    <MESSAGE value="description page" />
+    <option name="LAST_COMMIT_MESSAGE" value="description page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

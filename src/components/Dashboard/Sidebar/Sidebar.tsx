@@ -59,14 +59,14 @@ const Sidebar = () => {
           >
             All stations
           </SidebarButton>
-          {/*<SidebarButton*/}
-          {/*  isActive={pathname.includes("/history")}*/}
-          {/*  onClick={() => {*/}
-          {/*    navigate("/history");*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  History*/}
-          {/*</SidebarButton>*/}
+          <SidebarButton
+            isActive={pathname.includes("/history")}
+            onClick={() => {
+              navigate("/history");
+            }}
+          >
+            History
+          </SidebarButton>
           <SidebarButton
             isActive={pathname.includes("/follows")}
             onClick={() => {
@@ -75,14 +75,14 @@ const Sidebar = () => {
           >
             Follows
           </SidebarButton>
-            <SidebarButton
-                isActive={pathname.includes("/description")}
-                onClick={() => {
-                    navigate("/description");
-                }}
-            >
-                Description
-            </SidebarButton>
+          <SidebarButton
+            isActive={pathname.includes("/description")}
+            onClick={() => {
+              navigate("/description");
+            }}
+          >
+            Description
+          </SidebarButton>
         </SidebarButtonsBox>
       </Box>
     </>

@@ -74,9 +74,9 @@ const Dashboard = () => {
             />
             <Route path={"/forecast"} element={<DashboardForecast />} />
             <Route path={"/all-stations"} element={<DashboardAllStations />} />
-            {/*<Route path={"/history"} element={<DashboardHistory/>}/>*/}
             <Route path={"/follows"} element={<DashboardFollows />} />
-            <Route path={"/description"} element={<DashboardDescription/>}/>
+            <Route path={"/history"} element={<DashboardHistory />} />
+            <Route path={"/description"} element={<DashboardDescription />} />
           </Routes>
         </RoutesBox>
       </Box>

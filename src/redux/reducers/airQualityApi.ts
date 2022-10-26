@@ -7,7 +7,7 @@ interface setFollowCitySendObjectType {
   city: string;
   latitude?: number;
   longitude?: number;
-  refetchFollows?:()=>void
+  refetchFollows?: () => void;
 }
 // Define a service using a base URL and expected endpoints
 export const airQualityApi = createApi({
@@ -25,26 +25,44 @@ export const airQualityApi = createApi({
       query: (station) => ({
         url: `/station-follows`,
         method: "POST",
-        body: { country: station.country,
+        body: {
+          country: station.country,
           city: station.city,
           latitude: station?.latitude,
-          longitude: station?.longitude },
+          longitude: station?.longitude,
+        },
       }),
       async onQueryStarted(args, { queryFulfilled }) {
         const setFollowCityResponse = await queryFulfilled;
-        if(args.refetchFollows){args.refetchFollows()}
+        if (args.refetchFollows) {
+          args.refetchFollows();
+        }
         console.log({ setFollowCityResponse });
       },
     }),
-    deleteFollowCity: builder.mutation<unknown, { stationId:number, refetchFollows?:()=>void} >({
+    deleteFollowCity: builder.mutation<
+      unknown,
+      { stationId: number; refetchFollows?: () => void }
+    >({
       query: (args) => ({
         url: `/station-follows`,
         method: "DELETE",
-        body: { stationId:args.stationId },
+        body: { stationId: args.stationId },
       }),
       async onQueryStarted(args, { queryFulfilled }) {
         const deleteFollowCityResponse = await queryFulfilled;
-        if(args.refetchFollows){args.refetchFollows()}
+        if (args.refetchFollows) {
+          args.refetchFollows();
+        }
+      },
+    }),
+    getHistoryByFollowStationId: builder.query<unknown, { stationId: number }>({
+      query: (args) => ({
+        url: `/stations-history/${args.stationId}?t=${Date.now()}`,
+        method: "GET",
+      }),
+      async onQueryStarted(args, { queryFulfilled }) {
+        await queryFulfilled;
       },
     }),
   }),
@@ -52,4 +70,9 @@ export const airQualityApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetFollowsQuery, useSetFollowCityMutation, useDeleteFollowCityMutation } = airQualityApi;
+export const {
+  useGetFollowsQuery,
+  useSetFollowCityMutation,
+  useDeleteFollowCityMutation,
+  useGetHistoryByFollowStationIdQuery,
+} = airQualityApi;
