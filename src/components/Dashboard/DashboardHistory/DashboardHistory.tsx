@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useGetHistoryByFollowStationIdQuery } from "../../../redux/reducers/airQualityApi";
+import {
+  useGetFollowsQuery,
+  useGetHistoryByFollowStationIdQuery,
+} from "../../../redux/reducers/airQualityApi";
 import { Box } from "@mui/material";
 import { constants } from "../../../system/constants";
 import AccordionArrowSvg from "../../../svg/AccordionArrowSvg";
 import { Typography } from "../../../themeComponents/Typography";
+import moment from "moment";
 
 // const eventSource = new EventSource(`https://airnet.waqi.info/airnet/sse/historic/daily/227467?specie=pm25`)
 // const eventSource = new EventSource(`https://api.waqi.info/api/attsse/9996/yd.json`)
@@ -22,10 +26,16 @@ import { Typography } from "../../../themeComponents/Typography";
 
 const DashboardHistory = () => {
   const [stationId, setStationId] = useState(3);
+  const [selectedValue, setSelectedValue] = useState(null);
   const { data: historyDataById } = useGetHistoryByFollowStationIdQuery(
     { stationId: stationId ?? 0 },
     { skip: !stationId }
   );
+  const { data: followsData, refetch: refetchFollows } = useGetFollowsQuery("");
+  useEffect(() => {
+    refetchFollows();
+  }, []);
+
   console.log({ historyDataById });
   return (
     <>
@@ -45,6 +55,32 @@ const DashboardHistory = () => {
         >
           <DashboardSelect />
         </Box>
+        {historyDataById?.map((historyItem, index) => {
+          return (
+            <>
+              <Box
+                key={historyItem.id}
+                sx={{
+                  ...constants.boxSectionStyles,
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                  alignItems: "center",
+                }}
+              >
+                <Typography>{historyItem.country}</Typography>
+                <Typography>{historyItem.city}</Typography>
+                <Typography>
+                  {moment(historyItem.date).format("DD-MM-YYYY HH:mm:ss")}
+                </Typography>
+                <Typography
+                  sx={{ display: "flex", justifyContent: "flex-end" }}
+                >
+                  {historyItem.aqi}
+                </Typography>
+              </Box>
+            </>
+          );
+        })}
       </Box>
     </>
   );
@@ -82,7 +118,7 @@ const DashboardSelect: React.FC<{
             alignItems: "center",
           }}
         >
-          <Typography>sda</Typography>
+          <Typography>{value?.label}1111</Typography>
           <Box>
             <AccordionArrowSvg />
           </Box>
@@ -93,9 +129,39 @@ const DashboardSelect: React.FC<{
               position: "absolute",
               top: height ? `calc(${height} + 5px)` : "45px",
               left: "0px",
+              width: width ? width : "250px",
+              minHeight: "40px",
+              maxHeight: "250px",
+              overflowY: "scroll",
+              backgroundColor: "white",
+              borderRadius: "10px",
+              border: "1px solid gray",
+              "&::-webkit-scrollbar": {
+                width: "0px",
+              },
             }}
           >
-            Hello
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
+            <Typography>Hello</Typography>
           </Box>
         )}
       </Box>

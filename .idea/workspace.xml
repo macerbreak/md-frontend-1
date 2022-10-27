@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="description page">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="history page in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardFollows/DashboardFollows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardFollows/DashboardFollows.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Sidebar/Sidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/airQualityApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/airQualityApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +108,8 @@
       <workItem from="1665828482503" duration="5190000" />
       <workItem from="1665937627769" duration="666000" />
       <workItem from="1666554357675" duration="629000" />
-      <workItem from="1666807681797" duration="6289000" />
+      <workItem from="1666807681797" duration="6520000" />
+      <workItem from="1666896536965" duration="4918000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -365,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665834825443</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="history page in progress">
+      <created>1666814331631</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1666814331631</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,7 +389,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="trying to find ids" />
     <MESSAGE value="get rating" />
     <MESSAGE value="added countries rating list" />
     <MESSAGE value="added countries charts" />
@@ -409,7 +413,8 @@
     <MESSAGE value="home location" />
     <MESSAGE value="home cities" />
     <MESSAGE value="description page" />
-    <option name="LAST_COMMIT_MESSAGE" value="description page" />
+    <MESSAGE value="history page in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="history page in progress" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

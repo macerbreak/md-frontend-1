@@ -56,7 +56,21 @@ export const airQualityApi = createApi({
         }
       },
     }),
-    getHistoryByFollowStationId: builder.query<unknown, { stationId: number }>({
+    getHistoryByFollowStationId: builder.query<
+      {
+        id: number;
+        country: string;
+        city: string;
+        latitude: number;
+        longitude: number;
+        date: Date;
+        aqi: number;
+        stationId: number;
+        createdAt: Date;
+        updatedAt: Date;
+      }[],
+      { stationId: number }
+    >({
       query: (args) => ({
         url: `/stations-history/${args.stationId}?t=${Date.now()}`,
         method: "GET",
