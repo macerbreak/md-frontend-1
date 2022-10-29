@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="history page in progress" />
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="mac commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,22 +32,31 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2EJgNOmJNFD1DGS9SnE7DqLh0Qj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Dashboard/DashboardCountriesRating" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="ts.external.directory.path" value="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\node_modules\typescript\lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\src\components\Dashboard\DashboardCountriesRating" />
@@ -106,6 +121,11 @@
       <workItem from="1666554357675" duration="629000" />
       <workItem from="1666807681797" duration="6520000" />
       <workItem from="1666896536965" duration="5300000" />
+      <workItem from="1667060940361" duration="781000" />
+      <workItem from="1667062086596" duration="1000000" />
+      <workItem from="1667065009538" duration="798000" />
+      <workItem from="1667066460428" duration="4000" />
+      <workItem from="1667072057604" duration="2501000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -373,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666902781798</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="mac commit">
+      <created>1667061157698</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1667061157698</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,10 +416,8 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="get rating" />
     <MESSAGE value="added countries rating list" />
     <MESSAGE value="added countries charts" />
     <MESSAGE value="testing getting city forecast" />
@@ -417,7 +442,8 @@
     <MESSAGE value="home cities" />
     <MESSAGE value="description page" />
     <MESSAGE value="history page in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="history page in progress" />
+    <MESSAGE value="mac commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="mac commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

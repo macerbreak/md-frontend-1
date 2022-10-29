@@ -9,6 +9,8 @@ import { constants } from "../../../system/constants";
 import AccordionArrowSvg from "../../../svg/AccordionArrowSvg";
 import { Typography } from "../../../themeComponents/Typography";
 import moment from "moment";
+import { getCountryFlag } from "../../../utils/getCountryFlag";
+import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRating";
 
 // const eventSource = new EventSource(`https://airnet.waqi.info/airnet/sse/historic/daily/227467?specie=pm25`)
 // const eventSource = new EventSource(`https://api.waqi.info/api/attsse/9996/yd.json`)
@@ -25,7 +27,7 @@ import moment from "moment";
 // },[])
 
 const DashboardHistory = () => {
-  const [stationId, setStationId] = useState(3);
+  const [stationId, setStationId] = useState(1);
   const [selectedValue, setSelectedValue] = useState(null);
   const { data: historyDataById } = useGetHistoryByFollowStationIdQuery(
     { stationId: stationId ?? 0 },
@@ -51,11 +53,13 @@ const DashboardHistory = () => {
             display: "flex",
             alignItems: "center",
             padding: "0px 20px",
+            marginTop: "20px",
           }}
         >
           <DashboardSelect />
         </Box>
         {historyDataById?.map((historyItem, index) => {
+          const aqiColors = getAqiColors(+historyItem?.aqi);
           return (
             <>
               <Box
@@ -63,20 +67,46 @@ const DashboardHistory = () => {
                 sx={{
                   ...constants.boxSectionStyles,
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                  gridTemplateColumns: "90px 1fr 1fr 60px",
                   alignItems: "center",
+                  height: "60px",
+                  paddingLeft: "20px",
+                  paddingRight: "20px",
+                  marginTop: "20px",
                 }}
               >
-                <Typography>{historyItem.country}</Typography>
+                <Box
+                  sx={{
+                    width: "70px",
+                    height: "35px",
+                    img: {
+                      width: "50px",
+                      height: "35px",
+                    },
+                  }}
+                >
+                  <img src={getCountryFlag(historyItem.country)} />
+                </Box>
                 <Typography>{historyItem.city}</Typography>
                 <Typography>
                   {moment(historyItem.date).format("DD-MM-YYYY HH:mm:ss")}
                 </Typography>
-                <Typography
-                  sx={{ display: "flex", justifyContent: "flex-end" }}
+                <Box
+                  sx={{
+                    width: "60px",
+                    height: "32px",
+                    borderRadius: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    fontFamily: "Montserrat",
+                    ...aqiColors,
+                  }}
                 >
                   {historyItem.aqi}
-                </Typography>
+                </Box>
               </Box>
             </>
           );
