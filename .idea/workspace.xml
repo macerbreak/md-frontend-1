@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="styled history items">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="styled history">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" afterDir="false" />
     </list>
@@ -128,7 +128,7 @@
       <workItem from="1667072057604" duration="2730000" />
       <workItem from="1667152203667" duration="106000" />
       <workItem from="1667153666994" duration="121000" />
-      <workItem from="1667153829687" duration="6022000" />
+      <workItem from="1667153829687" duration="7056000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -410,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667074960927</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="styled history">
+      <created>1667161830927</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1667161830927</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added countries charts" />
     <MESSAGE value="testing getting city forecast" />
     <MESSAGE value="added coutries for forecast" />
     <MESSAGE value="got cities for forecast" />
@@ -453,7 +459,8 @@
     <MESSAGE value="history page in progress" />
     <MESSAGE value="mac commit" />
     <MESSAGE value="styled history items" />
-    <option name="LAST_COMMIT_MESSAGE" value="styled history items" />
+    <MESSAGE value="styled history" />
+    <option name="LAST_COMMIT_MESSAGE" value="styled history" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

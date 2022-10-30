@@ -27,6 +27,14 @@ import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRati
 // },[])
 
 const DashboardHistory = () => {
+    const eventSource = new EventSource(`http://localhost:5000/stations-history/real-history`)
+    useEffect(()=>{
+    console.log(eventSource)
+    eventSource.addEventListener('message', function(e) {
+        console.log(e.data);
+    }, false);
+    eventSource.onerror= (e)=>console.log({e})
+},[eventSource])
   const [stationId, setStationId] = useState(1);
   const [selectedValue, setSelectedValue] = useState<{
     label: string;
