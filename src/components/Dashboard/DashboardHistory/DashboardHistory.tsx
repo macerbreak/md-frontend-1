@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import {
   useGetFollowsQuery,
   useGetHistoryByFollowStationIdQuery,
 } from "../../../redux/reducers/airQualityApi";
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { constants } from "../../../system/constants";
 import AccordionArrowSvg from "../../../svg/AccordionArrowSvg";
 import { Typography } from "../../../themeComponents/Typography";
@@ -28,17 +28,33 @@ import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRati
 
 const DashboardHistory = () => {
   const [stationId, setStationId] = useState(1);
-  const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState<{
+    label: string;
+    value: number;
+  } | null>(null);
+  const [selectValues, setSelectValues] = useState<
+    { label: string; value: number }[]
+  >([]);
   const { data: historyDataById } = useGetHistoryByFollowStationIdQuery(
-    { stationId: stationId ?? 0 },
-    { skip: !stationId }
+    { stationId: selectedValue?.value ?? 0 },
+    { skip: !selectedValue }
   );
   const { data: followsData, refetch: refetchFollows } = useGetFollowsQuery("");
   useEffect(() => {
     refetchFollows();
   }, []);
-
-  console.log({ historyDataById });
+  useEffect(() => {
+    if (!!followsData) {
+      const valuesArray = followsData?.map((followData) => {
+        return {
+          label: followData.city,
+          value: followData.id,
+        };
+      });
+      setSelectValues(valuesArray ?? []);
+    }
+  }, [followsData]);
+  console.log({ selectValues });
   return (
     <>
       <Box
@@ -56,7 +72,19 @@ const DashboardHistory = () => {
             marginTop: "20px",
           }}
         >
-          <DashboardSelect />
+          <DashboardSelect
+            value={
+              selectedValue as
+                | { label: string; value: string | number }
+                | undefined
+            }
+            onChange={(value: { label: string; value: string | number }) => {
+              setSelectedValue(
+                value as SetStateAction<{ label: string; value: number } | null>
+              );
+            }}
+            values={selectValues}
+          />
         </Box>
         {historyDataById?.map((historyItem, index) => {
           const aqiColors = getAqiColors(+historyItem?.aqi);
@@ -116,13 +144,17 @@ const DashboardHistory = () => {
   );
 };
 const DashboardSelect: React.FC<{
-  onChange?: () => void;
-  values?: { label: string; value: unknown }[];
-  value?: { label: string; value: unknown };
+  onChange?: (value: { label: string; value: string | number }) => void;
+  values?: {
+    label: string;
+    value: string | number;
+  }[];
+  value?: { label: string; value: string | number };
   width?: string;
   height?: string;
 }> = ({ onChange, values, value, width, height }) => {
   const [isOpened, setIsOpened] = useState(false);
+  console.log({ values });
   return (
     <>
       <Box
@@ -148,7 +180,7 @@ const DashboardSelect: React.FC<{
             alignItems: "center",
           }}
         >
-          <Typography>{value?.label}1111</Typography>
+          <Typography>{value?.label ?? "Not selected"}</Typography>
           <Box>
             <AccordionArrowSvg />
           </Box>
@@ -166,36 +198,55 @@ const DashboardSelect: React.FC<{
               backgroundColor: "white",
               borderRadius: "10px",
               border: "1px solid gray",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+                padding:"5px 0 0 0",
+
               "&::-webkit-scrollbar": {
                 width: "0px",
               },
             }}
           >
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
-            <Typography>Hello</Typography>
+            {values?.map((value, index) => (
+              <SelectButton
+                onClick={() => {
+                  if (!!onChange) {
+                    onChange(value);
+                  }
+                }}
+                label={value.label}
+                value={value.value as string | number}
+                key={(value.value as number) ?? index}
+              />
+            ))}
           </Box>
         )}
       </Box>
     </>
   );
 };
+const SelectButton: React.FC<{
+  onClick: () => void;
+  value: string | number;
+  label: string | number;
+}> = ({ value, label, onClick }) => {
+  return (
+    <>
+      <StyledSelectButton onClick={onClick}>{label}</StyledSelectButton>
+    </>
+  );
+};
+const StyledSelectButton = styled("button")({
+    cursor:"initial",
+    fontFamily:"Montserrat",
+    marginBottom:"5px",
+    fontSize:"18px",
+    padding:"5px 0",
+    "&:hover":{
+        backgroundColor:"#ececec",
+        transition:constants.transition
+    },
+    transition:constants.transition
+});
 export default DashboardHistory;

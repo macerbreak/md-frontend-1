@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="mac commit">
+    <list default="true" id="ea0cdfb5-2b45-44cf-9b81-4f844614c4bd" name="Changes" comment="styled history items">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/DashboardHistory/DashboardHistory.tsx" afterDir="false" />
     </list>
@@ -40,23 +40,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/dinamickauser/Desktop/Masters Diploma/md-frontend-1/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dinamicka\Desktop\Masters Diploma\md-frontend-1\src\components\Dashboard\DashboardCountriesRating" />
@@ -125,7 +125,10 @@
       <workItem from="1667062086596" duration="1000000" />
       <workItem from="1667065009538" duration="798000" />
       <workItem from="1667066460428" duration="4000" />
-      <workItem from="1667072057604" duration="2501000" />
+      <workItem from="1667072057604" duration="2730000" />
+      <workItem from="1667152203667" duration="106000" />
+      <workItem from="1667153666994" duration="121000" />
+      <workItem from="1667153829687" duration="6022000" />
     </task>
     <task id="LOCAL-00001" summary="initialization">
       <created>1662319126814</created>
@@ -400,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667061157698</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="styled history items">
+      <created>1667074960927</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1667074960927</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +428,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added countries rating list" />
     <MESSAGE value="added countries charts" />
     <MESSAGE value="testing getting city forecast" />
     <MESSAGE value="added coutries for forecast" />
@@ -443,7 +452,8 @@
     <MESSAGE value="description page" />
     <MESSAGE value="history page in progress" />
     <MESSAGE value="mac commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="mac commit" />
+    <MESSAGE value="styled history items" />
+    <option name="LAST_COMMIT_MESSAGE" value="styled history items" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
