@@ -92,7 +92,7 @@ const SidebarButtonsBox = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: "300px",
+  marginTop: "250px",
 });
 const SidebarButton = styled("button")<{ isActive?: boolean }>(
   ({ isActive }) => ({

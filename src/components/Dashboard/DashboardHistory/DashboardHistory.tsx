@@ -1,4 +1,4 @@
-import React, { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import {
   useGetFollowsQuery,
@@ -27,14 +27,14 @@ import { getAqiColors } from "../DashboardCountriesRating/DashboardCountriesRati
 // },[])
 
 const DashboardHistory = () => {
-    const eventSource = new EventSource(`http://localhost:5000/stations-history/real-history`)
-    useEffect(()=>{
-    console.log(eventSource)
-    eventSource.addEventListener('message', function(e) {
-        console.log(e.data);
-    }, false);
-    eventSource.onerror= (e)=>console.log({e})
-},[eventSource])
+  //     const eventSource = new EventSource(`http://localhost:5000/stations-history/real-history`)
+  //     useEffect(()=>{
+  //     console.log(eventSource)
+  //     eventSource.addEventListener('message', function(e) {
+  //         console.log(e.data);
+  //     }, false);
+  //     eventSource.onerror= (e)=>console.log({e})
+  // },[eventSource])
   const [stationId, setStationId] = useState(1);
   const [selectedValue, setSelectedValue] = useState<{
     label: string;
@@ -47,6 +47,16 @@ const DashboardHistory = () => {
     { stationId: selectedValue?.value ?? 0 },
     { skip: !selectedValue }
   );
+  const sortedFilteredDataById = useMemo(() => {
+    let arrayForSort;
+    if (historyDataById) {
+      arrayForSort = [...historyDataById].sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      );
+    }
+    return arrayForSort ?? [];
+  }, [historyDataById]);
+  console.log({ sortedFilteredDataById });
   const { data: followsData, refetch: refetchFollows } = useGetFollowsQuery("");
   useEffect(() => {
     refetchFollows();
@@ -94,7 +104,7 @@ const DashboardHistory = () => {
             values={selectValues}
           />
         </Box>
-        {historyDataById?.map((historyItem, index) => {
+        {sortedFilteredDataById?.map((historyItem, index) => {
           const aqiColors = getAqiColors(+historyItem?.aqi);
           return (
             <>
@@ -209,7 +219,7 @@ const DashboardSelect: React.FC<{
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
-                padding:"5px 0 0 0",
+              padding: "5px 0 0 0",
 
               "&::-webkit-scrollbar": {
                 width: "0px",
@@ -246,15 +256,15 @@ const SelectButton: React.FC<{
   );
 };
 const StyledSelectButton = styled("button")({
-    cursor:"initial",
-    fontFamily:"Montserrat",
-    marginBottom:"5px",
-    fontSize:"18px",
-    padding:"5px 0",
-    "&:hover":{
-        backgroundColor:"#ececec",
-        transition:constants.transition
-    },
-    transition:constants.transition
+  cursor: "initial",
+  fontFamily: "Montserrat",
+  marginBottom: "5px",
+  fontSize: "18px",
+  padding: "5px 0",
+  "&:hover": {
+    backgroundColor: "#ececec",
+    transition: constants.transition,
+  },
+  transition: constants.transition,
 });
 export default DashboardHistory;
